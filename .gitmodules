@@ -64,3 +64,6 @@
 [submodule "vimerl"]
 	path = vimerl
 	url = ./bundle/vimerl/
+[submodule "bundle/vim-slime"]
+	path = bundle/vim-slime
+	url = git@github.com:jpalardy/vim-slime
