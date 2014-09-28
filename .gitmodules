@@ -1,0 +1,66 @@
+[submodule "ctrlp.vim"]
+	path = ctrlp.vim
+	url = ./bundle/ctrlp.vim
+[submodule "dash.vim"]
+	path = dash.vim
+	url = ./bundle/dash.vim
+[submodule "emmet-vim"]
+	path = emmet-vim
+	url = ./bundle/emmet-vim
+[submodule "html5.vim"]
+	path = html5.vim
+	url = ./bundle/html5.vim
+[submodule "nerdcommenter"]
+	path = nerdcommenter
+	url = ./bundle/nerdcommenter/
+[submodule "rainbow_parentheses.vim"]
+	path = rainbow_parentheses.vim
+	url = ./bundle/rainbow_parentheses.vim/
+[submodule "syntastic"]
+	path = syntastic
+	url = ./bundle/syntastic/
+[submodule "tern_for_vim"]
+	path = tern_for_vim
+	url = ./bundle/tern_for_vim/
+[submodule "vim-clojure-static"]
+	path = vim-clojure-static
+	url = ./bundle/vim-clojure-static/
+[submodule "vim-coffee-script"]
+	path = vim-coffee-script
+	url = ./bundle/vim-coffee-script/
+[submodule "vim-dispatch"]
+	path = vim-dispatch
+	url = ./bundle/vim-dispatch/
+[submodule "vim-elixir"]
+	path = vim-elixir
+	url = ./bundle/vim-elixir/
+[submodule "vim-fireplace"]
+	path = vim-fireplace
+	url = ./bundle/vim-fireplace/
+[submodule "vim-fugitive"]
+	path = vim-fugitive
+	url = ./bundle/vim-fugitive/
+[submodule "vim-gitgutter"]
+	path = vim-gitgutter
+	url = ./bundle/vim-gitgutter/
+[submodule "vim-javascript"]
+	path = vim-javascript
+	url = ./bundle/vim-javascript
+[submodule "vim-javascript-syntax"]
+	path = vim-javascript-syntax
+	url = ./bundle/vim-javascript-syntax/
+[submodule "vim-leiningen"]
+	path = vim-leiningen
+	url = ./bundle/vim-leiningen/
+[submodule "vim-lfe"]
+	path = vim-lfe
+	url = ./bundle/vim-lfe/
+[submodule "vim-multiple-cursors"]
+	path = vim-multiple-cursors
+	url = ./bundle/vim-multiple-cursors/
+[submodule "vim-projectionist"]
+	path = vim-projectionist
+	url = ./bundle/vim-projectionist/
+[submodule "vimerl"]
+	path = vimerl
+	url = ./bundle/vimerl/
