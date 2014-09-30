@@ -672,7 +672,14 @@ au Syntax * RainbowParenthesesLoadBraces
 " " ----------------------------------------------------------------------------
 
 let g:slime_target = "tmux"
-"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+let g:slime_default_config = {"socket_name": "default", "target_pane": "%1"}
+
+
+" " ----------------------------------------------------------------------------
+" " Fireplace:
+" " ----------------------------------------------------------------------------
+
+map <leader>e :Eval<enter>
 
 
 " " ============================================================================
