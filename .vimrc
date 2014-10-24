@@ -56,14 +56,15 @@ if !has("gui_running") && has("clipboard")
     set clipboard=unnamed
 endif
 
+"colorscheme Tomorrow-Night
 colorscheme lucius
-if has("gui_running")
-    LuciusLight
-    "LuciusDark
-else
-    LuciusLight
-    "LuciusDark
-endif
+"if has("gui_running")
+    "LuciusLight
+    ""LuciusDark
+"else
+    "LuciusLight
+    ""LuciusDark
+"endif
 
 set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
 set wildignore+=*.obj,*.h5,*.ttf,*.pdf,*.xls,*.pcl,*.gz,*.png
@@ -116,7 +117,7 @@ if has("gui_running")
     if has("gui_win32") || has ("gui_win64")
         set guifont=Consolas:h10
     elseif has("gui_macvim")
-        set guifont=Monaco:h11
+        set guifont=Monaco:h12
     endif
 else
     set guioptions+=aA
@@ -446,7 +447,7 @@ set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist
 let g:ctrlp_map = '<leader>fp'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 0
