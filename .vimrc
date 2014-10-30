@@ -58,13 +58,15 @@ endif
 
 "colorscheme Tomorrow-Night
 colorscheme lucius
-"if has("gui_running")
+if has("gui_running")
     "LuciusLight
-    ""LuciusDark
-"else
+    LuciusDark
+    "LuciusBlack
+else
     "LuciusLight
-    ""LuciusDark
-"endif
+    LuciusDark
+    "LuciusBlack
+endif
 
 set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
 set wildignore+=*.obj,*.h5,*.ttf,*.pdf,*.xls,*.pcl,*.gz,*.png
@@ -117,7 +119,7 @@ if has("gui_running")
     if has("gui_win32") || has ("gui_win64")
         set guifont=Consolas:h10
     elseif has("gui_macvim")
-        set guifont=Monaco:h12
+        set guifont=Monaco:h14
     endif
 else
     set guioptions+=aA
@@ -662,7 +664,7 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-au VimEnter * RainbowParenthesesToggle
+"au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
