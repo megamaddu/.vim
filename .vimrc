@@ -39,7 +39,7 @@ filetype plugin indent on
 " General Options:
 " ============================================================================
 
-set nu
+set rnu
 set shortmess=flmnrxIstToO
 set showmode
 set history=1000
@@ -326,9 +326,11 @@ command! WQ wq
 " " ----------------------------------------------------------------------------
 " " Airline:
 " " ----------------------------------------------------------------------------
-" 
-" let g:airline_left_sep=''
-" let g:airline_right_sep=''
+ 
+"let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " ----------------------------------------------------------------------------
 " Ctags:
