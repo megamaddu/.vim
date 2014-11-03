@@ -60,12 +60,12 @@ endif
 colorscheme lucius
 if has("gui_running")
     "LuciusLight
-    LuciusDark
-    "LuciusBlack
+    "LuciusDark
+    LuciusBlack
 else
     "LuciusLight
-    LuciusDark
-    "LuciusBlack
+    "LuciusDark
+    LuciusBlack
 endif
 
 set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
@@ -119,7 +119,7 @@ if has("gui_running")
     if has("gui_win32") || has ("gui_win64")
         set guifont=Consolas:h10
     elseif has("gui_macvim")
-        set guifont=Monaco:h14
+        set guifont=Monaco:h13
     endif
 else
     set guioptions+=aA
@@ -526,33 +526,33 @@ let NERDRemoveExtraSpaces=0
 " " NERD Tree:
 " " ----------------------------------------------------------------------------
  
-let g:NERDTreeChDirMode = 0
-let g:NERDChristmasTree = 1
-let g:NERDTreeCaseSensitiveSort = 0
-let g:NERDTreeIgnore = ['\.doc$', '\.pdf$', '\.xls$', '\.docx$',
-            \'\.zip$', '\.dll$', '\.so$', '\.pyc$', '\~$']
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinPos = 'left'
-let g:NERDTreeWinSize = 32
+"let g:NERDTreeChDirMode = 0
+"let g:NERDChristmasTree = 1
+"let g:NERDTreeCaseSensitiveSort = 0
+"let g:NERDTreeIgnore = ['\.doc$', '\.pdf$', '\.xls$', '\.docx$',
+            "\'\.zip$', '\.dll$', '\.so$', '\.pyc$', '\~$']
+"let g:NERDTreeShowHidden = 1
+"let g:NERDTreeWinPos = 'left'
+"let g:NERDTreeWinSize = 32
  
-map <F3> :NERDTreeToggle<CR>
-map <C-F3> :NERDTree<CR>
-map <S-F3> :NERDTreeClose<CR>
+"map <F3> :NERDTreeToggle<CR>
+"map <C-F3> :NERDTree<CR>
+"map <S-F3> :NERDTreeClose<CR>
 
-map <C-t> :tabn<Enter>
-map <C-n> :tabnew<Enter>
-map nt :NERDTreeTabsToggle<Enter>
+"map <C-t> :tabn<Enter>
+"map <C-n> :tabnew<Enter>
+"map nt :NERDTreeTabsToggle<Enter>
 
 " ----------------------------------------------------------------------------
 " Python:
 " ----------------------------------------------------------------------------
 
-let python_highlight_all = 1
-au BufEnter *.py :syntax sync fromstart " helps with ''' comments
+"let python_highlight_all = 1
+"au BufEnter *.py :syntax sync fromstart " helps with ''' comments
 
-let g:pyindent_open_paren = "&sw"
-let g:pyindent_nested_paren = "&sw"
-let g:pyindent_continue = "&sw"
+"let g:pyindent_open_paren = "&sw"
+"let g:pyindent_nested_paren = "&sw"
+"let g:pyindent_continue = "&sw"
 
 
 " " ----------------------------------------------------------------------------
