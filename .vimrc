@@ -83,7 +83,6 @@ au BufNewFile,BufRead *.cshtml set filetype=html
 au BufNewFile,BufRead *.src set filetype=erlang
 au BufNewFile,BufRead rebar.config set filetype=erlang
 
-noremap <silent> <leader>d :bd<CR>
 noremap <silent> <leader>n :bn<CR>
 noremap <silent> <leader>b :bp<CR>
 
@@ -113,14 +112,14 @@ set ignorecase incsearch nohlsearch smartcase
 if has("gui_running")
     set title
     if InLocation("home_osx")
-        set lines=80 columns=200 fuoptions=maxvert,maxhorz
+        set lines=80 columns=200 "fuoptions=maxvert,maxhorz
     else
         set lines=60 columns=160
     endif
     if has("gui_win32") || has ("gui_win64")
         set guifont=Consolas:h10
     elseif has("gui_macvim")
-        set guifont=Monaco:h13
+        set guifont=Source_Code_Pro_for_Powerline:h13
     endif
 else
     set guioptions+=aA
@@ -329,10 +328,10 @@ command! WQ wq
 " " Airline:
 " " ----------------------------------------------------------------------------
  
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
 
 " ----------------------------------------------------------------------------
 " Ctags:
@@ -530,22 +529,22 @@ let NERDRemoveExtraSpaces=0
 " " NERD Tree:
 " " ----------------------------------------------------------------------------
  
-"let g:NERDTreeChDirMode = 0
-"let g:NERDChristmasTree = 1
-"let g:NERDTreeCaseSensitiveSort = 0
-"let g:NERDTreeIgnore = ['\.doc$', '\.pdf$', '\.xls$', '\.docx$',
-            "\'\.zip$', '\.dll$', '\.so$', '\.pyc$', '\~$']
-"let g:NERDTreeShowHidden = 1
-"let g:NERDTreeWinPos = 'left'
-"let g:NERDTreeWinSize = 32
+let g:NERDTreeChDirMode = 0
+let g:NERDChristmasTree = 1
+let g:NERDTreeCaseSensitiveSort = 0
+let g:NERDTreeIgnore = ['\.doc$', '\.pdf$', '\.xls$', '\.docx$',
+            \'\.zip$', '\.dll$', '\.so$', '\.pyc$', '\~$']
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinPos = 'left'
+let g:NERDTreeWinSize = 32
  
-"map <F3> :NERDTreeToggle<CR>
-"map <C-F3> :NERDTree<CR>
-"map <S-F3> :NERDTreeClose<CR>
+map <F3> :NERDTreeToggle<CR>
+map <C-F3> :NERDTree<CR>
+map <S-F3> :NERDTreeClose<CR>
 
-"map <C-t> :tabn<Enter>
-"map <C-n> :tabnew<Enter>
-"map nt :NERDTreeTabsToggle<Enter>
+map <C-t> :tabn<Enter>
+map <C-n> :tabnew<Enter>
+map nt :NERDTreeTabsToggle<Enter>
 
 " ----------------------------------------------------------------------------
 " Python:
@@ -562,7 +561,7 @@ let NERDRemoveExtraSpaces=0
 " " ----------------------------------------------------------------------------
 " " SQLUtilities:
 " " ----------------------------------------------------------------------------
-" 
+ 
 " let g:sql_type_default = "sqlanywhere"
 " let g:sqlutil_align_where = 0
 " let g:sqlutil_align_comma = 1
