@@ -39,7 +39,8 @@ filetype plugin indent on
 " General Options:
 " ============================================================================
 
-set rnu
+set relativenumber
+set number
 set shortmess=flmnrxIstToO
 set showmode
 set history=1000
@@ -170,6 +171,7 @@ let maplocalleader = ";"
 noremap <silent> <leader>w :w<CR>
 noremap <silent> <leader>q :q<CR>
 noremap <silent> <leader>x :x<CR>
+noremap <silent> <leader>z :bd<CR>
 
 " Indenting in visual mode
 vnoremap <tab> >gv
@@ -470,8 +472,8 @@ noremap <silent> <leader>ft :CtrlPBufTag<CR>
 " Tern:
 " ----------------------------------------------------------------------------
 
-noremap <silent> <leader>td :TernDef<CR>
-noremap <silent> <leader>tp :TernDefPreview<CR>
+"noremap <silent> <leader>td :TernDef<CR>
+"noremap <silent> <leader>tp :TernDefPreview<CR>
 
 
 " " ----------------------------------------------------------------------------
