@@ -12,22 +12,22 @@ set nocompatible
 " Set location so we can set variables accordingly
 let location = "home_osx"
 if exists("$CITADEL_ENV")
-    if has("win32") || has("win64")
-        let location="work_win"
-    else
-        let location="work_linux"
-    endif
+  if has("win32") || has("win64")
+    let location="work_win"
+  else
+    let location="work_linux"
+  endif
 elseif has("win32") || has("win64")
-    let location="home_win"
+  let location="home_win"
 endif
 
 function! InLocation(...)
-    for l in a:000
-        if g:location == l
-            return 1
-        endif
-    endfor
-    return 0
+  for l in a:000
+    if g:location == l
+      return 1
+    endif
+  endfor
+  return 0
 endfunction
 
 execute pathogen#infect()
@@ -39,6 +39,8 @@ filetype plugin indent on
 " General Options:
 " ============================================================================
 
+set lazyredraw
+set ttyfast
 set relativenumber
 set number
 set shortmess=flmnrxIstToO
@@ -50,24 +52,15 @@ set shellslash
 set hidden
 set tags=./tags;/.
 if !has("gui_running")
-    set t_Co=256
-    set term=xterm-256color
+  set t_Co=256
+  set term=xterm-256color
 endif
 if !has("gui_running") && has("clipboard")
-    set clipboard=unnamed
+  set clipboard=unnamed
 endif
 
-"colorscheme Tomorrow-Night
 colorscheme lucius
-if has("gui_running")
-    "LuciusLight
-    "LuciusDark
-    LuciusBlack
-else
-    "LuciusLight
-    "LuciusDark
-    LuciusBlack
-endif
+LuciusWhite
 
 set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
 set wildignore+=*.obj,*.h5,*.ttf,*.pdf,*.xls,*.pcl,*.gz,*.png
@@ -86,6 +79,9 @@ au BufNewFile,BufRead rebar.config set filetype=erlang
 noremap <silent> <leader>n :bn<CR>
 noremap <silent> <leader>b :bp<CR>
 
+au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
+
+
 " ============================================================================
 " UI Options:
 " ============================================================================
@@ -95,6 +91,8 @@ set completeopt=longest,menu complete=.,w,b,u
 set confirm
 set guioptions=egc
 set laststatus=2
+set showtabline=2
+set noshowmode
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set fillchars=
 set mouse=a mousehide ttymouse=xterm2
@@ -110,26 +108,44 @@ set wildmenu wildmode=list:longest,full
 set winminheight=0 winminwidth=0
 set ignorecase incsearch nohlsearch smartcase
 if has("gui_running")
-    set title
-    if InLocation("home_osx")
-        set lines=80 columns=200 "fuoptions=maxvert,maxhorz
-    else
-        set lines=60 columns=160
-    endif
-    if has("gui_win32") || has ("gui_win64")
-        set guifont=Consolas:h10
-    elseif has("gui_macvim")
-        set guifont=Source_Code_Pro_for_Powerline:h13
-    endif
+  set title
+  if InLocation("home_osx")
+    set lines=80 columns=200 "fuoptions=maxvert,maxhorz
+  else
+    set lines=60 columns=160
+  endif
+  if has("gui_win32") || has ("gui_win64")
+    set guifont=Consolas:h10
+  elseif has("gui_macvim")
+    set guifont=Source_Code_Pro_for_Powerline:h13
+  endif
 else
-    set guioptions+=aA
+  set guioptions+=aA
 endif
 
-if has("gui_running")
-  hi MatchParen gui=bold guibg=#000000 guifg=#d0d0d7
-else
-  "hi MatchParen cterm=bold ctermbg=0 ctermfg=8
-endif
+"if has("gui_running")
+  "hi MatchParen gui=bold guibg=#000000 guifg=#d0d0d7
+"else
+  ""hi MatchParen cterm=bold ctermbg=0 ctermfg=8
+"endif
+
+"" set the cursor to a vertical line in insert mode and a solid block
+"" in command mode
+"if exists('$TMUX')
+    "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+"else
+    "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"endif
+
+" upon hitting escape to change modes,
+" send successive move-left and move-right
+" commands to immediately redraw the cursor
+inoremap <special> <Esc> <Esc>hl
+
+" don't blink the cursor
+set guicursor+=i:blinkwait0
 
 
 " ============================================================================
@@ -155,7 +171,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab shiftround
 set virtualedit=block
 set whichwrap+=<,>,h,l
 if version >= 703
-    set cryptmethod=blowfish
+  set cryptmethod=blowfish
 endif
 
 
@@ -180,9 +196,9 @@ vnoremap < <gv
 
 vnoremap <BS> d
 if InLocation("home_osx")
-    inoremap <A-BS> <C-w>
+  inoremap <A-BS> <C-w>
 elseif InLocation("home_win") || InLocation("work_win")
-    inoremap <C-BS> <C-w>
+  inoremap <C-BS> <C-w>
 endif
 
 map <Leader>gq gqap
@@ -207,15 +223,15 @@ nmap <C-l> <C-w>l
 
 " Resize windows
 if has("gui_running")
-    nnoremap <S-Up> 10<C-W>+
-    nnoremap <S-Down> 10<C-W>-
-    nnoremap <S-Left> 10<C-W><
-    nnoremap <S-Right> 10<C-W>>
+  nnoremap <S-Up> 10<C-W>+
+  nnoremap <S-Down> 10<C-W>-
+  nnoremap <S-Left> 10<C-W><
+  nnoremap <S-Right> 10<C-W>>
 else
-    nnoremap <Up> 10<C-W>+
-    nnoremap <Down> 10<C-W>-
-    nnoremap <Left> 10<C-W><
-    nnoremap <Right> 10<C-W>>
+  nnoremap <Up> 10<C-W>+
+  nnoremap <Down> 10<C-W>-
+  nnoremap <Left> 10<C-W><
+  nnoremap <Right> 10<C-W>>
 endif
 
 " Splitting
@@ -233,13 +249,13 @@ noremap x "_x
 
 " CTRL-A is Select all, etc
 if !InLocation("home_osx")
-    noremap <C-A> ggVG
-    inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
-    cnoremap <C-A> <C-C>gggH<C-O>G
-    onoremap <C-A> <C-C>gggH<C-O>G
-    snoremap <C-A> <C-C>gggH<C-O>G
-    xnoremap <C-A> <C-C>ggVG
-    noremap <C-S> :w<CR>
+  noremap <C-A> ggVG
+  inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+  cnoremap <C-A> <C-C>gggH<C-O>G
+  onoremap <C-A> <C-C>gggH<C-O>G
+  snoremap <C-A> <C-C>gggH<C-O>G
+  xnoremap <C-A> <C-C>ggVG
+  noremap <C-S> :w<CR>
 endif
 
 " Color scheme
@@ -249,31 +265,31 @@ nnoremap <C-F2> :LuciusDarkDim<CR>
 
 " Windows copy, cut, and paste
 if has("win32") || has("win64")
-    exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
-    exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
+  exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
+  exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
 
-    " Fix shift + insert to use the paste scripts too
-    imap <S-Insert> <C-V>
-    vmap <S-Insert> <C-V>
+  " Fix shift + insert to use the paste scripts too
+  imap <S-Insert> <C-V>
+  vmap <S-Insert> <C-V>
 
-    " Use CTRL-Q to do what CTRL-V used to do
-    noremap <C-Q> <C-V>
+  " Use CTRL-Q to do what CTRL-V used to do
+  noremap <C-Q> <C-V>
 
-    " CTRL-X and SHIFT-Del are Cut
-    vnoremap <C-X> "+x
-    vnoremap <S-Del> "+x
+  " CTRL-X and SHIFT-Del are Cut
+  vnoremap <C-X> "+x
+  vnoremap <S-Del> "+x
 
-    " CTRL-C and CTRL-Insert are Copy
-    vnoremap <C-C> "+y
-    vnoremap <C-Insert> "+y
+  " CTRL-C and CTRL-Insert are Copy
+  vnoremap <C-C> "+y
+  vnoremap <C-Insert> "+y
 
-    " CTRL-V and SHIFT-Insert are Paste
-    map <C-V> "+gP
-    map <S-Insert> "+gP
+  " CTRL-V and SHIFT-Insert are Paste
+  map <C-V> "+gP
+  map <S-Insert> "+gP
 
-    " Command mode paste
-    cmap <C-V> <C-R>+
-    cmap <S-Insert> <C-R>+
+  " Command mode paste
+  cmap <C-V> <C-R>+
+  cmap <S-Insert> <C-R>+
 endif
 
 " Don't bring up help on F1
@@ -327,11 +343,21 @@ command! WQ wq
 " " ----------------------------------------------------------------------------
 " " Airline:
 " " ----------------------------------------------------------------------------
- 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
 "let g:airline_left_sep=''
 "let g:airline_right_sep=''
+
+" " ----------------------------------------------------------------------------
+" " Powerline:
+" " ----------------------------------------------------------------------------
+
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+
 
 " ----------------------------------------------------------------------------
 " Ctags:
@@ -520,24 +546,24 @@ noremap <silent> <leader>ft :CtrlPBufTag<CR>
 " " ----------------------------------------------------------------------------
 " " NERD Commenter:
 " " ----------------------------------------------------------------------------
- 
+
 let NERDShutUp = 1
 let NERDRemoveExtraSpaces=0
- 
- 
+
+
 " " ----------------------------------------------------------------------------
 " " NERD Tree:
 " " ----------------------------------------------------------------------------
- 
+
 let g:NERDTreeChDirMode = 0
 let g:NERDChristmasTree = 1
 let g:NERDTreeCaseSensitiveSort = 0
 let g:NERDTreeIgnore = ['\.doc$', '\.pdf$', '\.xls$', '\.docx$',
-            \'\.zip$', '\.dll$', '\.so$', '\.pyc$', '\~$']
+      \'\.zip$', '\.dll$', '\.so$', '\.pyc$', '\~$']
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize = 32
- 
+
 map <F3> :NERDTreeToggle<CR>
 map <C-F3> :NERDTree<CR>
 map <S-F3> :NERDTreeClose<CR>
@@ -561,7 +587,7 @@ map nt :NERDTreeTabsToggle<Enter>
 " " ----------------------------------------------------------------------------
 " " SQLUtilities:
 " " ----------------------------------------------------------------------------
- 
+
 " let g:sql_type_default = "sqlanywhere"
 " let g:sqlutil_align_where = 0
 " let g:sqlutil_align_comma = 1
@@ -583,20 +609,20 @@ map nt :NERDTreeTabsToggle<Enter>
 " Syntastic:
 " ----------------------------------------------------------------------------
 
- let g:syntastic_check_on_open = 0
- let g:syntastic_echo_current_error = 1
- let g:syntastic_enable_signs = 1
- let g:syntastic_enable_balloons = 1
- let g:syntastic_always_populate_loc_list=1
- let g:syntastic_enable_highlighting = 1
- let g:syntastic_auto_loc_list = 1
- let g:syntastic_mode_map = {
-             \ "mode": "passive",
-             \ "active_filetypes": [],
-             \ "passive_filetypes": [] }
- let g:syntastic_python_checkers = ["pyflakes"]
- map <Leader>syc :SyntasticCheck<CR>
- map <Leader>syr :SyntasticReset<CR>
+let g:syntastic_check_on_open = 0
+let g:syntastic_echo_current_error = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_enable_balloons = 1
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_mode_map = {
+      \ "mode": "passive",
+      \ "active_filetypes": [],
+      \ "passive_filetypes": [] }
+let g:syntastic_python_checkers = ["pyflakes"]
+map <Leader>syc :SyntasticCheck<CR>
+map <Leader>syr :SyntasticReset<CR>
 
 
 " " ----------------------------------------------------------------------------
@@ -646,23 +672,23 @@ map nt :NERDTreeTabsToggle<Enter>
 " " ----------------------------------------------------------------------------
 
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+      \ ['brown',       'RoyalBlue3'],
+      \ ['Darkblue',    'SeaGreen3'],
+      \ ['darkgray',    'DarkOrchid3'],
+      \ ['darkgreen',   'firebrick3'],
+      \ ['darkcyan',    'RoyalBlue3'],
+      \ ['darkred',     'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['brown',       'firebrick3'],
+      \ ['gray',        'RoyalBlue3'],
+      \ ['black',       'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['Darkblue',    'firebrick3'],
+      \ ['darkgreen',   'RoyalBlue3'],
+      \ ['darkcyan',    'SeaGreen3'],
+      \ ['darkred',     'DarkOrchid3'],
+      \ ['red',         'firebrick3'],
+      \ ]
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
@@ -718,16 +744,16 @@ map <leader>e :Eval<enter>
 " ----------------------------------------------------------------------------
 
 function! EditColors()
-    execute 'e ~/vimfiles/colors/lucius.vim'
-    execute 'so $VIMRUNTIME/syntax/hitest.vim'
-    execute 'wincmd L'
-    execute 'help syntax'
-    execute 'wincmd ='
-    execute '10wincmd +'
-    execute '219'
-    normal! zt
-    execute 'wincmd h'
-    execute 'set title titlestring=Colors'
+  execute 'e ~/vimfiles/colors/lucius.vim'
+  execute 'so $VIMRUNTIME/syntax/hitest.vim'
+  execute 'wincmd L'
+  execute 'help syntax'
+  execute 'wincmd ='
+  execute '10wincmd +'
+  execute '219'
+  normal! zt
+  execute 'wincmd h'
+  execute 'set title titlestring=Colors'
 endfunction
 command! Colors call EditColors()
 
@@ -737,12 +763,12 @@ command! Colors call EditColors()
 " ----------------------------------------------------------------------------
 
 function! GetOutput(cmd)
-    redir => message
-    silent execute a:cmd
-    redir END
-    enew
-    silent put=message
-    set nomodified
+  redir => message
+  silent execute a:cmd
+  redir END
+  enew
+  silent put=message
+  set nomodified
 endfunction
 command! -nargs=+ -complete=command GetOutput call GetOutput(<q-args>)
 
@@ -752,17 +778,17 @@ command! -nargs=+ -complete=command GetOutput call GetOutput(<q-args>)
 " ----------------------------------------------------------------------------
 
 function! UseWorkSettings()
-    "au BufNewFile,BufRead *.py set noexpandtab
-    au BufNewFile,BufRead *.py set expandtab colorcolumn=80
-    au BufNewFile,BufRead *.cpp set noexpandtab
-    au BufNewFile,BufRead *.C set noexpandtab
-    au BufNewFile,BufRead *.hpp set noexpandtab
-    au BufNewFile,BufRead *.H set noexpandtab
-    au BufNewFile,BufRead *.cs set noexpandtab
+  "au BufNewFile,BufRead *.py set noexpandtab
+  au BufNewFile,BufRead *.py set expandtab colorcolumn=80
+  au BufNewFile,BufRead *.cpp set noexpandtab
+  au BufNewFile,BufRead *.C set noexpandtab
+  au BufNewFile,BufRead *.hpp set noexpandtab
+  au BufNewFile,BufRead *.H set noexpandtab
+  au BufNewFile,BufRead *.cs set noexpandtab
 endfunction
 command! WorkSettings :call UseWorkSettings()
 if InLocation("work_win", "work_linux")
-    WorkSettings
+  WorkSettings
 endif
 
 
@@ -771,6 +797,6 @@ endif
 " ============================================================================
 
 if filereadable(expand("~/.vimrc_local"))
-    source ~/.vimrc_local
+  source ~/.vimrc_local
 endif
 
