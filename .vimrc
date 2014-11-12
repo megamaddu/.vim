@@ -60,7 +60,7 @@ if !has("gui_running") && has("clipboard")
 endif
 
 colorscheme lucius
-LuciusWhite
+LuciusBlack
 
 set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
 set wildignore+=*.obj,*.h5,*.ttf,*.pdf,*.xls,*.pcl,*.gz,*.png
