@@ -344,18 +344,18 @@ command! WQ wq
 " " Airline:
 " " ----------------------------------------------------------------------------
 
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " " ----------------------------------------------------------------------------
 " " Powerline:
 " " ----------------------------------------------------------------------------
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 "set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 
