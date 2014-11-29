@@ -40,8 +40,9 @@ filetype plugin indent on
 " ============================================================================
 
 set lazyredraw
-set ttyfast
-set relativenumber
+"set ttyfast
+"set relativenumber
+set scrolloff=7
 set number
 set shortmess=flmnrxIstToO
 set showmode
@@ -59,8 +60,10 @@ if !has("gui_running") && has("clipboard")
   set clipboard=unnamed
 endif
 
-colorscheme lucius
-LuciusBlack
+colorscheme Tomorrow-Night
+"set background=dark
+"colorscheme lucius
+"LuciusBlack
 
 set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
 set wildignore+=*.obj,*.h5,*.ttf,*.pdf,*.xls,*.pcl,*.gz,*.png
@@ -100,7 +103,6 @@ set noequalalways
 set noerrorbells novisualbell
 set ruler showcmd
 set scrollopt=jump,ver,hor
-set showtabline=1
 set sidescroll=10
 set splitbelow splitright
 set statusline=%<%f\ %h%m%r%y[%{&ff}]%=%-14.(%l,%c%V%)\ %P
@@ -122,22 +124,6 @@ if has("gui_running")
 else
   set guioptions+=aA
 endif
-
-"if has("gui_running")
-  "hi MatchParen gui=bold guibg=#000000 guifg=#d0d0d7
-"else
-  ""hi MatchParen cterm=bold ctermbg=0 ctermfg=8
-"endif
-
-"" set the cursor to a vertical line in insert mode and a solid block
-"" in command mode
-"if exists('$TMUX')
-    "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-"else
-    "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-"endif
 
 " upon hitting escape to change modes,
 " send successive move-left and move-right
@@ -257,11 +243,6 @@ if !InLocation("home_osx")
   xnoremap <C-A> <C-C>ggVG
   noremap <C-S> :w<CR>
 endif
-
-" Color scheme
-nnoremap <F2> :LuciusLight<CR>
-nnoremap <S-F2> :LuciusDark<CR>
-nnoremap <C-F2> :LuciusDarkDim<CR>
 
 " Windows copy, cut, and paste
 if has("win32") || has("win64")
@@ -435,41 +416,6 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 
 
 " ----------------------------------------------------------------------------
-" CScope:
-" ----------------------------------------------------------------------------
-
-"if has("cscope")
-"    set cscopequickfix=s-,c-,d-,i-,t-,e-
-"    if filereadable("cscope.out")
-"        set cscopetagorder=0
-"        set cscopetag
-"        set nocscopeverbose
-"        cs add cscope.out
-"        "set cscopeverbose
-"    endif
-
-"    " View the tag (g-] behavior)
-"    nmap <C-@>v :tselect <C-R>=expand("<cword>")<CR><CR>
-"    " Find this C symbol
-"    nmap <C-@>s :lcscope find s <C-R>=expand("<cword>")<CR><CR>
-"    " Find this definition
-"    nmap <C-@>g :lcscope find g <C-R>=expand("<cword>")<CR><CR>
-"    " Find functions called by this function
-"    nmap <C-@>d :lcscope find d <C-R>=expand("<cword>")<CR><CR>
-"    " Find functions calling this function
-"    nmap <C-@>c :lcscope find c <C-R>=expand("<cword>")<CR><CR>
-"    " Find this text string
-"    nmap <C-@>t :lcscope find t <C-R>=expand("<cword>")<CR><CR>
-"    " Find this egrep pattern
-"    nmap <C-@>e :lcscope find e <C-R>=expand("<cword>")<CR><CR>
-"    " Find this file
-"    nmap <C-@>f :lcscope find f <C-R>=expand("<cword>")<CR><CR>
-"    " Find files #including this file
-"    nmap <C-@>i :lcscope find i <C-R>=expand("<cword>")<CR><CR>
-"endif
-
-
-" ----------------------------------------------------------------------------
 " CtrlP:
 " ----------------------------------------------------------------------------
 
@@ -502,48 +448,6 @@ noremap <silent> <leader>ft :CtrlPBufTag<CR>
 
 
 " " ----------------------------------------------------------------------------
-" " Dbext:
-" " ----------------------------------------------------------------------------
-" 
-" let g:dbext_default_prompt_for_parameters = 0
-" let g:dbext_default_display_cmd_line = 1
-" let g:dbext_default_SQLITE_bin = "sqlite3"
-" let g:dbext_default_history_file = "$HOME/.dbext_sql_history.txt"
-
-
-" " ----------------------------------------------------------------------------
-" " Lucius:
-" " ----------------------------------------------------------------------------
-" 
-" let g:projects = {}
-" let g:databases = {}
-" command! Tags call lucius#GenerateTags(fnamemodify(bufname('%'), \':p:h'), 0) " current file dir
-" command! TagsForce call lucius#GenerateTags(fnamemodify(bufname('%'), \':p:h'), 1) " current file dir, force
-" command! TagsCwd call lucius#GenerateTags(getcwd(), 0) " current cwd
-" command! TagsCwdForce call lucius#GenerateTags(getcwd(), 1) " cwd, force
-" command! -nargs=1 -complete=file Sqlite :call lucius#LoadSqlite(<q-args>)
-" command! -nargs=1 -complete=custom,lucius#DatabaseComplete Database :call
-"             \ lucius#LoadDatabase(<q-args>)
-" command! -nargs=1 -complete=custom,lucius#DatabaseComplete Data :call
-"             \ lucius#LoadDatabase(<q-args>)
-" command! -nargs=1 -complete=custom,lucius#ProjectComplete Project :call
-"             \ lucius#LoadProject(<q-args>)
-" command! -nargs=1 -complete=custom,lucius#ProjectComplete Proj :call
-"             \ lucius#LoadProject(<q-args>)
-" 
-" noremap <C-f> :call lucius#ToggleSearchHighlighting()<CR>
-" nnoremap <F10> :call lucius#ToggleTextWidth()<CR>
-" nnoremap <S-F10> :call lucius#ToggleWrap()<CR>
-" nnoremap <F11> :call lucius#ToggleSpellCheck()<CR>
-" nnoremap <F12> :call lucius#ToggleScrollbars()<CR>
-" 
-" if has("python")
-"     command! -range EvalPythonRange call lucius#EvaluateCurrentRange()
-"     map <silent> <F5> :EvalPythonRange<CR>
-" endif
-
-
-" " ----------------------------------------------------------------------------
 " " NERD Commenter:
 " " ----------------------------------------------------------------------------
 
@@ -572,38 +476,6 @@ map <C-t> :tabn<Enter>
 map <C-n> :tabnew<Enter>
 map nt :NERDTreeTabsToggle<Enter>
 
-" ----------------------------------------------------------------------------
-" Python:
-" ----------------------------------------------------------------------------
-
-"let python_highlight_all = 1
-"au BufEnter *.py :syntax sync fromstart " helps with ''' comments
-
-"let g:pyindent_open_paren = "&sw"
-"let g:pyindent_nested_paren = "&sw"
-"let g:pyindent_continue = "&sw"
-
-
-" " ----------------------------------------------------------------------------
-" " SQLUtilities:
-" " ----------------------------------------------------------------------------
-
-" let g:sql_type_default = "sqlanywhere"
-" let g:sqlutil_align_where = 0
-" let g:sqlutil_align_comma = 1
-" let g:sqlutil_align_first_word = 1
-" let g:sqlutil_keyword_case = '\L'
-
-
-" " ----------------------------------------------------------------------------
-" " SuperTab:
-" " ----------------------------------------------------------------------------
-" 
-" let SuperTabDefaultCompletionType = "context"
-" let SuperTabContextDefaultCompletionType = "<c-n>"
-" let SuperTabContextTextOmniPrecedence = ["&completefunc"]
-" au BufEnter *.md,*.txt,*.wiki :let b:SuperTabNoCompleteAfter = g:SuperTabNoCompleteAfter + ['\.', '\*', '-', ')']
-
 
 " ----------------------------------------------------------------------------
 " Syntastic:
@@ -623,48 +495,6 @@ let g:syntastic_mode_map = {
 let g:syntastic_python_checkers = ["pyflakes"]
 map <Leader>syc :SyntasticCheck<CR>
 map <Leader>syr :SyntasticReset<CR>
-
-
-" " ----------------------------------------------------------------------------
-" " Tagbar:
-" " ----------------------------------------------------------------------------
-" 
-" let g:tagbar_compact = 1
-" let g:tagbar_iconchars = ['+', '-']
-" let g:tagbar_ctags_bin = g:ctags_bin
-" map <F4> :TagbarToggle<CR>
-" 
-" map <leader>t :echo tagbar#currenttag('%s','','fs')<CR>
-" "set statusline=%<%f\ %h%m%r%y[%{&ff}]\ \ %{tagbar#currenttag('%s','','f')}%=%-14.(%l,%c%V%)\ %P
-
-
-" " ----------------------------------------------------------------------------
-" " VCS:
-" " ----------------------------------------------------------------------------
-" 
-" let VCSCommandDeleteOnHide = 1
-" augroup VCSCommand
-"     au User VCSBufferCreated set bufhidden=wipe
-" augroup END
-" map <Leader>vd :VCSVimDiff<CR>
-
-
-" " ----------------------------------------------------------------------------
-" " VimClojure:
-" " ----------------------------------------------------------------------------
-
-"unmap <leader>p
-"let g:vimclojure#HighlightBuiltins = 1
-"let g:vimclojure#ParenRainbow = 1
-
-
-" " ----------------------------------------------------------------------------
-" " VimClojure Nailgun:
-" " ----------------------------------------------------------------------------
-
-"let vimclojure#WantNailgun = 1 
-" this should only be necessary if you don't have the ng client in your PATH
-"let vimclojure#NailgunClient = "/path/to/your/ng"
 
 
 " " ----------------------------------------------------------------------------
@@ -712,27 +542,6 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "%1"}
 " " ----------------------------------------------------------------------------
 
 map <leader>e :Eval<enter>
-
-
-" " ============================================================================
-" " Autocommands:
-" " ============================================================================
-" 
-" " Close the preview window automatically
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-" 
-" " Set xaml to be like xml
-" au BufNewFile,BufRead *.xaml setfiletype xml
-" 
-" " Format for xml
-" au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-" 
-" " Markdown
-" au FileType markdown setlocal formatoptions-=l textwidth=79
-" 
-" " ICE
-" au FileType slice setlocal cindent
 
 
 " ============================================================================
