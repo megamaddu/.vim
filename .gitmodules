@@ -29,14 +29,14 @@
 	path = bundle/vim-coffee-script
 	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "vim-dispatch"]
-  path = bundle/vim-dispatch
-  url = git@github.com:tpope/vim-dispatch.git
+	path = bundle/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch.git
 [submodule "vim-elixir"]
-  path = bundle/vim-elixir
-  url = git@github.com:elixir-lang/vim-elixir.git
+	path = bundle/vim-elixir
+	url = git@github.com:elixir-lang/vim-elixir.git
 [submodule "vim-fireplace"]
-  path = bundle/vim-fireplace
-  url = git@github.com:tpope/vim-fireplace.git
+	path = bundle/vim-fireplace
+	url = git@github.com:tpope/vim-fireplace.git
 [submodule "vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
@@ -47,8 +47,8 @@
 	path = bundle/vim-javascript-syntax
 	url = git@github.com:jelera/vim-javascript-syntax.git
 [submodule "vim-leiningen"]
-  path = bundle/vim-leiningen
-  url = git@github.com:tpope/vim-leiningen.git
+	path = bundle/vim-leiningen
+	url = git@github.com:tpope/vim-leiningen.git
 [submodule "vim-multiple-cursors"]
 	path = bundle/vim-multiple-cursors
 	url = git@github.com:terryma/vim-multiple-cursors.git
@@ -56,8 +56,8 @@
 	path = bundle/vim-projectionist
 	url = git@github.com:tpope/vim-projectionist.git
 [submodule "vimerl"]
-  path = bundle/vimerl
-  url = git@github.com:jimenezrick/vimerl.git
+	path = bundle/vimerl
+	url = git@github.com:jimenezrick/vimerl.git
 [submodule "bundle/vim-slime"]
 	path = bundle/vim-slime
 	url = git@github.com:jpalardy/vim-slime
@@ -67,15 +67,15 @@
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = git@github.com:fatih/vim-go.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "bundle/vim-nerdtree-tabs"]
-	path = bundle/vim-nerdtree-tabs
-	url = git@github.com:jistr/vim-nerdtree-tabs.git
 [submodule "bundle/ag.vim"]
 	path = bundle/ag.vim
 	url = git@github.com:rking/ag.vim.git
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "bundle/vim-sensible"]
+	path = bundle/vim-sensible
+	url = git@github.com:tpope/vim-sensible.git
