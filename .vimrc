@@ -60,8 +60,8 @@ if !has("gui_running") && has("clipboard")
   set clipboard=unnamed
 endif
 
-colorscheme Tomorrow-Night
-"set background=dark
+colorscheme Tomorrow-Night-Bright
+"set background=light
 "colorscheme lucius
 "LuciusBlack
 
@@ -325,7 +325,7 @@ command! WQ wq
 " " Airline:
 " " ----------------------------------------------------------------------------
 
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -523,10 +523,12 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-"au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+au Syntax clojure RainbowParenthesesToggle
+
+
 
 
 " " ----------------------------------------------------------------------------
