@@ -3,7 +3,7 @@ execute pathogen#infect()
 syntax enable
 filetype plugin indent on
 set background=light
-colorscheme solarized
+colorscheme lucius
 
 set lazyredraw
 set nu
