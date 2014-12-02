@@ -7,6 +7,42 @@ colorscheme solarized
 
 set lazyredraw
 set nu
+set scrolloff=7
+set shortmess=flmnrxIstToO
+set showmode
+set history=1000
+set nofoldenable foldmethod=manual
+set browsedir=buffer
+set shellslash
+set hidden
+set cmdheight=1
+set completeopt=longest,menu complete=.,w,b,u
+set confirm
+set guioptions=egc
+set laststatus=2
+set showtabline=2
+set noshowmode
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
+set fillchars=
+set mouse=a mousehide ttymouse=xterm2
+set noequalalways
+set noerrorbells novisualbell
+set ruler showcmd
+set scrollopt=jump,ver,hor
+set sidescroll=10
+set splitbelow splitright
+set statusline=%<%f\ %h%m%r%y[%{&ff}]%=%-14.(%l,%c%V%)\ %P
+set wildmenu wildmode=list:longest,full
+set winminheight=0 winminwidth=0
+set ignorecase incsearch nohlsearch smartcase
+set wildignore+=.svn\*,*.pyc,*.pyo,*.so,*.o,*.dll,*.lib,*.pyd
+set wildignore+=*.obj,*.h5,*.ttf,*.pdf,*.xls,*.pcl,*.gz,*.png
+set wildignore+=*.gif,*.jpg,*.ico,*.bak,*~
+set wildignore+=*.sln,*.csproj,*.resx,*.suo
+set wildignore+=*.exe,*.pdb,*.map
+set wildignore+=*.doc
+set wildignore+=tmp,tags,cscope.out
+
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
