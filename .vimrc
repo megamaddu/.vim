@@ -42,7 +42,21 @@ set wildignore+=*.sln,*.csproj,*.resx,*.suo
 set wildignore+=*.exe,*.pdb,*.map
 set wildignore+=*.doc
 set wildignore+=tmp,tags,cscope.out
-
+set autoread
+set encoding=utf-8
+set fileformats=unix,dos
+set nobackup nowritebackup noswapfile
+set autoindent
+set backspace=indent,eol,start
+set formatoptions=tcrqn
+set nowrap nojoinspaces
+set showmatch
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab shiftround
+set virtualedit=block
+set whichwrap+=<,>,h,l
+if version >= 703
+  set cryptmethod=blowfish
+endif
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
@@ -85,7 +99,7 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 0
 let g:ctrlp_switch_buffer = 'vh'
-let g:ctrlp_extensions = ['buffertag']
+"let g:ctrlp_extensions = ['buffertag']
 "let g:ctrlp_custom_ignore = { }
 
 noremap <silent> <leader>ff :CtrlPCurWD<CR>
