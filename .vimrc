@@ -5,6 +5,7 @@ filetype plugin indent on
 set background=light
 colorscheme lucius
 
+"set list
 set lazyredraw
 set nu
 set scrolloff=7
