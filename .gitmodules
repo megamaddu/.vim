@@ -10,9 +10,6 @@
 [submodule "html5.vim"]
 	path = bundle/html5.vim
 	url = git@github.com:othree/html5.vim.git
-[submodule "nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = git@github.com:scrooloose/nerdcommenter.git
 [submodule "rainbow_parentheses.vim"]
 	path = bundle/rainbow_parentheses.vim
 	url = git@github.com:kien/rainbow_parentheses.vim.git
@@ -88,3 +85,9 @@
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git@github.com:godlygeek/tabular.git
+[submodule "bundle/tcomment"]
+	path = bundle/tcomment
+	url = git@github.com:tomtom/tcomment_vim.git
