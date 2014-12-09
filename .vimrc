@@ -114,6 +114,11 @@ noremap <silent> <leader>ft :CtrlPBufTag<CR>
 "noremap <silent> <leader>tp :TernDefPreview<CR>
 
 
+" Jsx:
+let g:jsx_ext_required = 0
+let g:jsx_pragma_required = 0
+
+
 " NERD Commenter:
 let NERDShutUp = 1
 let NERDRemoveExtraSpaces=0
