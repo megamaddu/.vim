@@ -64,6 +64,7 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 au BufNewFile,BufRead *.cshtml set filetype=html
 au BufNewFile,BufRead *.src set filetype=erlang
 au BufNewFile,BufRead rebar.config set filetype=erlang
+au BufNewFile,BufRead *.cljx set filetype=clojure
 
 let mapleader = ";"
 
