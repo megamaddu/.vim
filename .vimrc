@@ -178,3 +178,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "%1"}
 
 " Fireplace:
 map <leader>e :Eval<enter>
+
+
+" Dbext:
+let g:localvimrc_whitelist = "/Users/trotter"
