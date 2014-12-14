@@ -82,6 +82,11 @@ nmap <C-l> <C-w>l
 
 noremap x "_x
 
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+inoremap < <><Esc>i
+
 
 " Airline:
 "let g:airline_powerline_fonts = 1
