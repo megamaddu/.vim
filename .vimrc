@@ -7,6 +7,7 @@ colorscheme lucius
 
 "set list
 set lazyredraw
+set ttyfast
 set nu
 set scrolloff=7
 set shortmess=flmnrxIstToO
@@ -21,7 +22,7 @@ set completeopt=longest,menu complete=.,w,b,u
 set confirm
 set guioptions=egc
 set laststatus=2
-set showtabline=2
+set showtabline=1
 set noshowmode
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set fillchars=
@@ -55,9 +56,10 @@ set showmatch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab shiftround
 set virtualedit=block
 set whichwrap+=<,>,h,l
-if version >= 703
+if version >= 703 && !has("nvim")
   set cryptmethod=blowfish
 endif
+set guicursor+=i:blinkwait0
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
@@ -82,21 +84,39 @@ nmap <C-l> <C-w>l
 
 noremap x "_x
 
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
-inoremap < <><Esc>i
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
+vnoremap > >gv
+vnoremap < <gv
+
+vmap <C-j> /^[^a-zA-Z0-9]*$<CR>k
+vmap <C-k> ?^[^a-zA-Z0-9]*$<CR>j
+
+if has("gui_running")
+  nnoremap <S-Up> 10<C-W>+
+  nnoremap <S-Down> 10<C-W>-
+  nnoremap <S-Left> 10<C-W><
+  nnoremap <S-Right> 10<C-W>>
+else
+  nnoremap <Up> 10<C-W>+
+  nnoremap <Down> 10<C-W>-
+  nnoremap <Left> 10<C-W><
+  nnoremap <Right> 10<C-W>>
+endif
+
+noremap <leader>sp :split<CR>
+noremap <leader>vs :vsplit<CR>
+
+set pastetoggle=<F2>
 
 
 " Airline:
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 
 " CtrlP:
-set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist
+set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,target,out
 
 let g:ctrlp_map = '<leader>fp'
 let g:ctrlp_cmd = 'CtrlP'
