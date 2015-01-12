@@ -59,7 +59,7 @@ set whichwrap+=<,>,h,l
 if version >= 703 && !has("nvim")
   set cryptmethod=blowfish
 endif
-set guicursor+=i:blinkwait0
+set guicursor+=a:blinkon0
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
@@ -129,7 +129,7 @@ let g:ctrlp_switch_buffer = 'vh'
 "let g:ctrlp_extensions = ['buffertag']
 "let g:ctrlp_custom_ignore = { }
 
-noremap <silent> <leader>ff :CtrlPCurWD<CR>
+noremap <silent> <leader>ff :CtrlPLastMode<CR>
 noremap <silent> <leader>fb :CtrlPBuffer<CR>
 noremap <silent> <leader>fr :CtrlPMRU<CR>
 noremap <silent> <leader>ft :CtrlPBufTag<CR>
