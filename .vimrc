@@ -4,11 +4,12 @@ syntax enable
 filetype plugin indent on
 set background=dark
 colo lucius
+hi VertSplit ctermbg=255 ctermfg=277
+hi StatusLine ctermbg=255 ctermfg=277
 
-"set list
 set lazyredraw
 set ttyfast
-"set nu
+set number
 set scrolloff=7
 set shortmess=flmnrxIstToO
 set history=1000
@@ -58,6 +59,10 @@ if has("gui_running")
   set guicursor+=a:blinkon0
   set guifont=Source_Code_Pro:h11
 endif
+set showmode
+set ruler
+set laststatus=2
+set showcmd
 let s:hidden_all = 0
 function! ToggleHiddenAll()
     if s:hidden_all  == 0
