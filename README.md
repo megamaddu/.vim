@@ -12,7 +12,7 @@ git clone --recursive git://github.com/spicydonuts/.vim.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
 ```
 
-This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin, which requires an extra command to build (see their `README` for more info):
+This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin, which requires an extra command to build (see their README for more info):
 ```sh
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh # optional flags: --clang-completer --omnisharp-completer
