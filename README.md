@@ -1,18 +1,12 @@
 .vim
 ====
 
-![screenshot](https://raw.githubusercontent.com/spicydonuts/.vim/master/example.png)
+[screenshot](https://raw.githubusercontent.com/spicydonuts/.vim/master/example.png)
 
 To use this configuration
 ----
 
-If you already have a `.vim` folder or `.vimrc`, back them up:
-```sh
-mv ~/.vim ~/.vim.bak
-mv ~/.vimrc ~/.vimrc.bak
-```
-
-Clone the repo and symlink `.vimrc`:
+Clone the repo and symlink `.vimrc` (back up your existing first profile if you have one!):
 ```sh
 git clone --recursive git://github.com/spicydonuts/.vim.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
@@ -46,6 +40,12 @@ Colors
 ----
 
 Includes [Lucius](https://github.com/spicydonuts/lucius), if you'd like to use it for your terminal as well.  My fork just adds OS X Terminal profiles (iTerm2 is very laggy in my experience).
+
+
+Thanks
+----
+
+Huge thanks to all the plugin authors and StackOverflow answers that made this possible!
 
 
 Disclaimer
