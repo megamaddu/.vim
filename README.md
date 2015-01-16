@@ -4,14 +4,16 @@
 To use this configuration
 ----
 
-If you already have a `.vim` folder, back it up:
+If you already have a `.vim` folder or `.vimrc`, back them up:
 ```sh
 mv ~/.vim ~/.vim.bak
+mv ~/.vimrc ~/.vimrc.bak
 ```
 
-Clone the repo:
+Clone the repo and symlink `.vimrc`:
 ```sh
 git clone --recursive git://github.com/spicydonuts/.vim.git ~/.vim
+ln -s ~/.vim/.vimrc ~/.vimrc
 ```
 
 This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin, which requires an extra command to build (see their `README` for more info):
