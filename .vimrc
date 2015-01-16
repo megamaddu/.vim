@@ -93,10 +93,10 @@ let mapleader = ";"
 
 noremap <silent> <leader>n :bn<CR>
 noremap <silent> <leader>b :bp<CR>
+noremap <silent> <leader>x :bp\|bd #<CR>
 
 noremap <silent> <leader>w :w<CR>
 noremap <silent> <leader>q :qa<CR>
-noremap <silent> <leader>x :x<CR>
 
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -138,9 +138,9 @@ let g:ctrlp_map = '<leader>ff'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_show_hidden = 0
-let g:ctrlp_max_height = 20
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_lazy_update = 0
+let g:ctrlp_max_height = 30
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_lazy_update = 1
 let g:ctrlp_switch_buffer = 'vh'
 
 noremap <silent> <leader>fp :CtrlPLastMode<CR>
@@ -204,3 +204,7 @@ autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 nnoremap <F3> :Goyo<CR>
 "autocmd BufNewFile,BufRead * :Goyo
+
+
+" EditorConfig:
+let g:EditorConfig_core_mode = 'external_command'
