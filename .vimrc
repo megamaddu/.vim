@@ -75,7 +75,7 @@ function! ToggleHiddenAll()
     endif
 endfunction
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
-autocmd BufNewFile,BufRead * :call ToggleHiddenAll()
+"autocmd BufNewFile,BufRead * :call ToggleHiddenAll()
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
@@ -198,4 +198,4 @@ let g:limelight_default_coefficient = 0.7
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 nnoremap <F3> :Goyo<CR>
-autocmd BufNewFile,BufRead * :Goyo
+"autocmd BufNewFile,BufRead * :Goyo
