@@ -43,7 +43,7 @@ This `.vimrc` uses the excellent [Source Code Pro](http://adobe-fonts.github.io/
 Colors
 ----
 
-Includes [Lucius](https://github.com/spicydonuts/lucius).  My fork adds OS X Terminal profiles.
+Includes [Lucius](https://github.com/spicydonuts/lucius).  My fork adds OS X Terminal profiles.  iTerm2 is very laggy in my experience.
 
 
 Disclaimer
