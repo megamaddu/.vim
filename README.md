@@ -8,15 +8,15 @@ Screenshot in 'zen' mode:
 
 Goodies
 ----
-`<leader>` is bound to `;`.
-`;n` and `;b` to jump to next/previous buffers.
-`;w` for a quick save.
-`;x` closes a the current buffer, but not the window or pane it's in.
-`;q` closes everything.
-`<F3>` toggles 'zen' mode.
-`;ff` opens CtrlP.  Partially match a file name and hit `Enter`.  Refresh the file list with `<F5>`.  Move up and down the list with `<C-k>` and `<C-j>`.
-`;e` to `:Eval` the current expression using Fireplace.  Automatically connects to a running Clojure[Script] REPL using `.nrepl-port`.
-`gc` in Visual mode to toggle commenting on the selected lines.
+* `<leader>` is bound to `;`.
+* `;n` and `;b` to jump to next/previous buffers.
+* `;w` for a quick save.
+* `;x` closes a the current buffer, but not the window or pane it's in.
+* `;q` closes everything.
+* `<F3>` toggles 'zen' mode.
+* `;ff` opens CtrlP.  Partially match a file name and hit `Enter`.  Refresh the file list with `<F5>`.  Move up and down the list with `<C-k>` and `<C-j>`.
+* `;e` to `:Eval` the current expression using Fireplace.  Automatically connects to a running Clojure[Script] REPL using `.nrepl-port`.
+* `gc` in Visual mode to toggle commenting on the selected lines.
 
 Many more small conveniences and syntax files included.  I'm really picky about performance though, so you won't find any powerline craziness in here!
 
