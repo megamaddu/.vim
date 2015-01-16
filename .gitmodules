@@ -10,9 +10,6 @@
 [submodule "html5.vim"]
 	path = bundle/html5.vim
 	url = git@github.com:othree/html5.vim.git
-[submodule "rainbow_parentheses.vim"]
-	path = bundle/rainbow_parentheses.vim
-	url = git@github.com:kien/rainbow_parentheses.vim.git
 [submodule "syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
@@ -67,9 +64,6 @@
 [submodule "bundle/ag.vim"]
 	path = bundle/ag.vim
 	url = git@github.com:rking/ag.vim.git
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
@@ -85,9 +79,6 @@
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
-[submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = git@github.com:godlygeek/tabular.git
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = git@github.com:tomtom/tcomment_vim.git
@@ -103,3 +94,9 @@
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = git@github.com:wting/rust.vim.git
+[submodule "bundle/limelight.vim"]
+	path = bundle/limelight.vim
+	url = git@github.com:junegunn/limelight.vim.git
+[submodule "bundle/goyo.vim"]
+	path = bundle/goyo.vim
+	url = git@github.com:junegunn/goyo.vim.git

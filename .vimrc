@@ -2,10 +2,8 @@ execute pathogen#infect()
 
 syntax enable
 filetype plugin indent on
-if has("gui") && has("gui_macvim")
-  set background=dark
-endif
-colorscheme lucius
+set background=dark
+colo lucius
 
 "set list
 set lazyredraw
@@ -13,7 +11,6 @@ set ttyfast
 "set nu
 set scrolloff=7
 set shortmess=flmnrxIstToO
-set showmode
 set history=1000
 set nofoldenable foldmethod=manual
 set browsedir=buffer
@@ -23,15 +20,11 @@ set cmdheight=1
 set completeopt=longest,menu complete=.,w,b,u
 set confirm
 set guioptions=egc
-set laststatus=2
-set showtabline=1
-set noshowmode
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set fillchars=
 set mouse=a mousehide ttymouse=xterm2
 set noequalalways
 set noerrorbells novisualbell
-set ruler showcmd
 set scrollopt=jump,ver,hor
 set sidescroll=10
 set splitbelow splitright
@@ -61,10 +54,28 @@ set whichwrap+=<,>,h,l
 if version >= 703 && !has("nvim")
   set cryptmethod=blowfish
 endif
-if has("gui_macvim")
+if has("gui_running")
   set guicursor+=a:blinkon0
   set guifont=Source_Code_Pro:h11
 endif
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+autocmd BufNewFile,BufRead * :call ToggleHiddenAll()
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
@@ -79,7 +90,7 @@ noremap <silent> <leader>n :bn<CR>
 noremap <silent> <leader>b :bp<CR>
 
 noremap <silent> <leader>w :w<CR>
-noremap <silent> <leader>q :q<CR>
+noremap <silent> <leader>q :qa<CR>
 noremap <silent> <leader>x :x<CR>
 
 nmap <C-j> <C-w>j
@@ -115,12 +126,6 @@ noremap <leader>vs :vsplit<CR>
 set pastetoggle=<F2>
 
 
-" Airline:
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='lucius'
-
-
 " CtrlP:
 set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,target,out
 
@@ -132,8 +137,6 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 0
 let g:ctrlp_switch_buffer = 'vh'
-"let g:ctrlp_extensions = ['buffertag']
-"let g:ctrlp_custom_ignore = { }
 
 noremap <silent> <leader>fp :CtrlPLastMode<CR>
 noremap <silent> <leader>fb :CtrlPBuffer<CR>
@@ -173,35 +176,6 @@ map <Leader>syc :SyntasticCheck<CR>
 map <Leader>syr :SyntasticReset<CR>
 
 
-" Rainbow Parens:
-let g:rbpt_colorpairs = [
-      \ ['brown',       'RoyalBlue3'],
-      \ ['Darkblue',    'SeaGreen3'],
-      \ ['darkgray',    'DarkOrchid3'],
-      \ ['darkgreen',   'firebrick3'],
-      \ ['darkcyan',    'RoyalBlue3'],
-      \ ['darkred',     'SeaGreen3'],
-      \ ['darkmagenta', 'DarkOrchid3'],
-      \ ['brown',       'firebrick3'],
-      \ ['gray',        'RoyalBlue3'],
-      \ ['black',       'SeaGreen3'],
-      \ ['darkmagenta', 'DarkOrchid3'],
-      \ ['Darkblue',    'firebrick3'],
-      \ ['darkgreen',   'RoyalBlue3'],
-      \ ['darkcyan',    'SeaGreen3'],
-      \ ['darkred',     'DarkOrchid3'],
-      \ ['red',         'firebrick3'],
-      \ ]
-
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-au Syntax clojure RainbowParenthesesToggle
-
-
 " Vim Slime:
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "%1"}
@@ -215,10 +189,13 @@ map <leader>e :Eval<enter>
 let g:localvimrc_whitelist = "/Users/trotter"
 
 
-" Tabularize:
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+" LimeLight:
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_default_coefficient = 0.7
+
+
+" Goyo:
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
+nnoremap <F3> :Goyo<CR>
+autocmd BufNewFile,BufRead * :Goyo
