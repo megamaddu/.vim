@@ -2,13 +2,15 @@ execute pathogen#infect()
 
 syntax enable
 filetype plugin indent on
-set background=light
+if has("gui") && has("gui_macvim")
+  set background=dark
+endif
 colorscheme lucius
 
 "set list
 set lazyredraw
 set ttyfast
-set nu
+"set nu
 set scrolloff=7
 set shortmess=flmnrxIstToO
 set showmode
@@ -59,7 +61,10 @@ set whichwrap+=<,>,h,l
 if version >= 703 && !has("nvim")
   set cryptmethod=blowfish
 endif
-set guicursor+=a:blinkon0
+if has("gui_macvim")
+  set guicursor+=a:blinkon0
+  set guifont=Source_Code_Pro:h11
+endif
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
@@ -113,14 +118,15 @@ set pastetoggle=<F2>
 " Airline:
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_theme='lucius'
 
 
 " CtrlP:
 set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,target,out
 
-let g:ctrlp_map = '<leader>fp'
+let g:ctrlp_map = '<leader>ff'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
@@ -129,7 +135,7 @@ let g:ctrlp_switch_buffer = 'vh'
 "let g:ctrlp_extensions = ['buffertag']
 "let g:ctrlp_custom_ignore = { }
 
-noremap <silent> <leader>ff :CtrlPLastMode<CR>
+noremap <silent> <leader>fp :CtrlPLastMode<CR>
 noremap <silent> <leader>fb :CtrlPBuffer<CR>
 noremap <silent> <leader>fr :CtrlPMRU<CR>
 noremap <silent> <leader>ft :CtrlPBufTag<CR>
@@ -207,3 +213,12 @@ map <leader>e :Eval<enter>
 
 " Dbext:
 let g:localvimrc_whitelist = "/Users/trotter"
+
+
+" Tabularize:
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
