@@ -22,6 +22,7 @@ cd ~/.vim/bundle/YouCompleteMe
 ./install.sh # optional flags: --clang-completer --omnisharp-completer
 ```
 
+
 To pull updates later:
 ----
 
@@ -32,10 +33,18 @@ cd ~/.vim && git pull && git submodule update --recursive
 
 Then re-run the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) installer as shown above.
 
+
 Fonts
 ----
 
 This `.vimrc` uses the excellent [Source Code Pro](http://adobe-fonts.github.io/source-code-pro/).
+
+
+Colors
+----
+
+Includes [Lucius](https://github.com/spicydonuts/lucius).  My fork adds OS X Terminal profiles.
+
 
 Disclaimer
 ----
