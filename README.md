@@ -1,6 +1,8 @@
 .vim
 ====
 
+![screenshot](https://raw.githubusercontent.com/spicydonuts/.vim/master/example.png)
+
 To use this configuration
 ----
 
