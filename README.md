@@ -29,3 +29,13 @@ cd ~/.vim && git pull && git submodule update --recursive
 ```
 
 Then re-run the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) installer as shown above.
+
+Fonts
+----
+
+This `.vimrc` uses the excellent [Source Code Pro](http://adobe-fonts.github.io/source-code-pro/).
+
+Disclaimer
+----
+
+Only tested in OS X (vim/macvim).
