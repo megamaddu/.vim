@@ -36,6 +36,10 @@ This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plu
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh # optional flags: --clang-completer --omnisharp-completer
 ```
+The editorconfig extension also depends on the external `editorconfig` being available.  You can install it with:
+```sh
+brew install editorconfig
+```
 
 
 To pull updates later:
