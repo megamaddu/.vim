@@ -200,6 +200,7 @@ let g:limelight_default_coefficient = 0.7
 
 
 " Goyo:
+let g:goyo_width = 90
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 nnoremap <F3> :Goyo<CR>
