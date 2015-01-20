@@ -207,5 +207,11 @@ nnoremap <F3> :Goyo<CR>
 "autocmd BufNewFile,BufRead * :Goyo
 
 
+" Paredit:
+let g:paredit_electric_return = 0
+let g:paredit_smartjump = 1
+" let g:paredit_shortmaps = 1
+
+
 " EditorConfig:
 let g:EditorConfig_core_mode = 'external_command'
