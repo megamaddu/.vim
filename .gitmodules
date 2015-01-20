@@ -100,3 +100,6 @@
 [submodule "bundle/goyo.vim"]
 	path = bundle/goyo.vim
 	url = git@github.com:junegunn/goyo.vim.git
+[submodule "bundle/paredit.vim"]
+	path = bundle/paredit.vim
+	url = git@github.com:vim-scripts/paredit.vim.git
