@@ -134,13 +134,13 @@ set pastetoggle=<F2>
 " CtrlP:
 set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,target,out
 
-let g:ctrlp_map = '<leader>ff'
+let g:ctrlp_map = '<leader><Space>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_max_height = 30
 let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_lazy_update = 1
+let g:ctrlp_lazy_update = 10
 let g:ctrlp_switch_buffer = 'vh'
 
 noremap <silent> <leader>fp :CtrlPLastMode<CR>
@@ -196,14 +196,20 @@ let g:localvimrc_whitelist = "/Users/trotter"
 
 " LimeLight:
 let g:limelight_conceal_ctermfg = 240
-let g:limelight_default_coefficient = 0.7
+let g:limelight_default_coefficient = 0.6
 
 
 " Goyo:
 let g:goyo_width = 90
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+let g:goyo_linenr = 0
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 nnoremap <F3> :Goyo<CR>
+vnoremap <F3> :<C-U>Goyo<CR>
+inoremap <F3> <C-O>:Goyo<CR>
+cnoremap <F3> <C-C>:Goyo<CR>
 "autocmd BufNewFile,BufRead * :Goyo
 
 

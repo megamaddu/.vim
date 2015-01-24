@@ -14,7 +14,7 @@ Goodies
 * `;x` closes a the current buffer, but not the window or pane it's in.
 * `;q` closes everything.
 * `<F3>` toggles 'zen' mode.
-* `;ff` opens CtrlP.  Partially match a file name and hit `Enter`.  Refresh the file list with `<F5>`.  Move up and down the list with `<C-k>` and `<C-j>`.
+* `;<Space>` opens CtrlP.  Partially match a file name and hit `Enter`.  Refresh the file list with `<F5>`.  Move up and down the list with `<C-k>` and `<C-j>`.
 * `;e` to `:Eval` the current expression using Fireplace.  Automatically connects to a running Clojure[Script] REPL using `.nrepl-port`.
 * `gc` in Visual mode to toggle commenting on the selected lines.
 
