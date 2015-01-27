@@ -13,9 +13,6 @@
 [submodule "syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
-[submodule "tern_for_vim"]
-	path = bundle/tern_for_vim
-	url = git@github.com:marijnh/tern_for_vim.git
 [submodule "vim-clojure-static"]
 	path = bundle/vim-clojure-static
 	url = git@github.com:guns/vim-clojure-static.git
