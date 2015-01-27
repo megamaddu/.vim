@@ -131,6 +131,11 @@ noremap <leader>vs :vsplit<CR>
 set pastetoggle=<F2>
 
 
+" Airline:
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+
 " CtrlP:
 set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,target,out
 
