@@ -4,8 +4,6 @@ syntax enable
 filetype plugin indent on
 set background=dark
 colo lucius
-hi VertSplit ctermbg=255 ctermfg=277
-hi StatusLine ctermbg=255 ctermfg=277
 
 set lazyredraw
 set ttyfast
