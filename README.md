@@ -12,7 +12,8 @@ Goodies
 * `;n` and `;b` to jump to next/previous buffers.
 * `;w` for a quick save.
 * `;x` closes a the current buffer, but not the window or pane it's in.
-* `;q` closes everything.
+* `;q` closes the active pane.
+* `;Q` closes everything.
 * `<F3>` toggles 'zen' mode.
 * `;<Space>` opens CtrlP.  Partially match a file name and hit `Enter`.  Refresh the file list with `<F5>`.  Move up and down the list with `<C-k>` and `<C-j>`.
 * `;e` to `:Eval` the current expression using Fireplace.  Automatically connects to a running Clojure[Script] REPL using `.nrepl-port`.

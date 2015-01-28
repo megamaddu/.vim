@@ -96,7 +96,8 @@ noremap <silent> <leader>b :bp<CR>
 noremap <silent> <leader>x :bp\|bd #<CR>
 
 noremap <silent> <leader>w :w<CR>
-noremap <silent> <leader>q :qa<CR>
+noremap <silent> <leader>q :q<CR>
+noremap <silent> <leader><S-q> :qa<CR>
 
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
