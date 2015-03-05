@@ -56,6 +56,7 @@ endif
 if has("gui_running")
   set guicursor+=a:blinkon0
   set guifont=Source_Code_Pro:h11
+  " set guifont=Monaco:h11
 endif
 set showmode
 set ruler
@@ -86,6 +87,7 @@ au BufNewFile,BufRead *.cshtml set filetype=html
 au BufNewFile,BufRead *.src set filetype=erlang
 au BufNewFile,BufRead rebar.config set filetype=erlang
 au BufNewFile,BufRead *.cljx set filetype=clojure
+au BufNewFile,BufRead *.pxi set filetype=clojure
 
 let mapleader = ";"
 
