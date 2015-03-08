@@ -1,3 +1,4 @@
+set shell=bash
 execute pathogen#infect()
 
 syntax enable
