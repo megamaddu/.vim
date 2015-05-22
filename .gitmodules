@@ -109,3 +109,6 @@
 [submodule "bundle/bundle/vim-fish"]
 	path = bundle/bundle/vim-fish
 	url = git@github.com:dag/vim-fish.git
+[submodule "bundle/purescript-vim"]
+	path = bundle/purescript-vim
+	url = git@github.com:raichoo/purescript-vim.git

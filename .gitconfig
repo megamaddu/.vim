@@ -1,0 +1,59 @@
+[user]
+	name = Michael Trotter
+	email = spicydonuts@gmail.com
+[color]
+	ui = true
+[push]
+	default = simple
+[alias]
+	c = clone
+  f = fetch --all -p --tags
+  make-fetch-happen = fetch --all -p --tags
+	co = checkout
+	ci = commit
+	ph = push
+	pl = pull
+	plr = pull --rebase
+	b = branch
+	br = branch
+	s = status
+	st = status
+	m = merge
+  mc = merge --continue
+  ma = merge --abort
+	mt = mergetool
+  d = diff
+  dt = difftool
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  dhist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --left-right --cherry-pick --oneline
+	type = cat-file -t
+  dump = cat-file -p
+  sub = submodule
+	a = add
+	ad = add
+  r = reset
+  re = reset
+  rb = rebase
+  rbc = rebase --continue
+  rba = rebase --abort
+[diff]
+  tool = bc3
+[difftool]
+  prompt = false
+[merge]
+  tool = bc3
+[mergetool]
+  prompt = false
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[core]
+	autocrlf = input
+	editor = /usr/local/bin/vimgit
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

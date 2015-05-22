@@ -1,4 +1,3 @@
-set shell=bash
 execute pathogen#infect()
 
 syntax enable
@@ -59,6 +58,10 @@ if has("gui_running")
   set guifont=Source_Code_Pro:h11
   " set guifont=Monaco:h11
 endif
+if has("nvim")
+  set guicursor+=a:blinkon0
+  set guifont=Source_Code_Pro:h11
+endif
 set showmode
 set ruler
 set laststatus=2
@@ -104,6 +107,10 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
+"tmap <C-j> <C-\><C-n><C-w>j
+"tmap <C-k> <C-\><C-n><C-w>k
+"tmap <C-h> <C-\><C-n><C-w>h
+"tmap <C-l> <C-\><C-n><C-w>l
 
 noremap x "_x
 
@@ -143,7 +150,7 @@ set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,tar
 
 let g:ctrlp_map = '<leader><Space>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_max_height = 30
 let g:ctrlp_clear_cache_on_exit = 1
