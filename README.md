@@ -31,7 +31,7 @@ Clone the repo and symlink `.vimrc` (back up your existing first profile if you 
 git clone --recursive git://github.com/spicydonuts/.vim.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
 ```
-Open vim and install plugins (ignore the warning about not finging lucius colors)
+Open vim and install plugins (ignore the warning about not finding lucius colors)
 ```
 vim
 (in vim)
