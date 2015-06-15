@@ -1,4 +1,47 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'junegunn/vim-easy-align'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/syntastic'
+Plug 'tomtom/tcomment_vim'
+Plug 'bling/vim-airline'
+" Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+
+Plug 'vim-scripts/paredit.vim', {'for': 'clojure'}
+Plug 'guns/vim-clojure-static', {'for': 'clojure'}
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+Plug 'tpope/vim-salve', {'for': 'clojure'}
+
+Plug 'kchmck/vim-coffee-script', {'for': 'coffeescript'}
+
+Plug 'othree/html5.vim', {'for': 'html'}
+
+Plug 'raichoo/purescript-vim', {'for': 'purescript'}
+
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+
+Plug 'junegunn/seoul256.vim', {'for': 'erlang'}
+
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
+
+Plug 'fatih/vim-go', {'for': 'go'}
+
+Plug 'tpope/vim-haml', {'for': 'haml'}
+
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+" Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'mxw/vim-jsx', {'for': 'javascript'}
+
+Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
+
+call plug#end()
 
 syntax enable
 filetype plugin indent on
@@ -6,7 +49,7 @@ set background=dark
 colo lucius
 
 set lazyredraw
-set ttyfast
+" set ttyfast
 set number
 set scrolloff=7
 set shortmess=flmnrxIstToO
@@ -21,7 +64,7 @@ set confirm
 set guioptions=egc
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set fillchars=
-set mouse=a mousehide ttymouse=xterm2
+set mouse=a mousehide " ttymouse=xterm2
 set noequalalways
 set noerrorbells novisualbell
 set scrollopt=jump,ver,hor
@@ -62,7 +105,7 @@ if has("nvim")
   set guicursor+=a:blinkon0
   set guifont=Source_Code_Pro:h11
 endif
-set showmode
+set noshowmode
 set ruler
 set laststatus=2
 set showcmd
@@ -103,14 +146,17 @@ noremap <silent> <leader>w :w<CR>
 noremap <silent> <leader>q :q<CR>
 noremap <silent> <leader><S-q> :qa<CR>
 
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
-"tmap <C-j> <C-\><C-n><C-w>j
-"tmap <C-k> <C-\><C-n><C-w>k
-"tmap <C-h> <C-\><C-n><C-w>h
-"tmap <C-l> <C-\><C-n><C-w>l
+tnoremap <C-w> <C-\><C-n><C-w>
+" noremap <leader>a <C-w>
+
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
+" tnoremap <C-j> <C-w>j
+" tnoremap <C-k> <C-w>k
+" tnoremap <C-h> <C-w>h
+" tnoremap <C-l> <C-w>l
 
 noremap x "_x
 
