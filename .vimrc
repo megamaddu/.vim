@@ -45,7 +45,7 @@ call plug#end()
 
 syntax enable
 filetype plugin indent on
-set background=dark
+"set background=dark
 colo lucius
 
 set lazyredraw
