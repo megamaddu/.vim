@@ -11,7 +11,7 @@ Plug 'mattn/emmet-vim'
 Plug 'scrooloose/syntastic'
 Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
-" Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 
 Plug 'vim-scripts/paredit.vim', {'for': 'clojure'}
@@ -23,6 +23,7 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffeescript'}
 
 Plug 'othree/html5.vim', {'for': 'html'}
 
+Plug 'raichoo/haskell-vim', {'for': 'haskell'}
 Plug 'raichoo/purescript-vim', {'for': 'purescript'}
 
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -39,16 +40,22 @@ Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 " Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'mxw/vim-jsx', {'for': 'javascript'}
 
+Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
+Plug 'mtscout6/vim-cjsx', {'for': 'coffee'}
+
+Plug 'OmniSharp/omnisharp-vim', {'for': 'cs'}
+"Plug 'OrangeT/vim-csharp', {'for': 'cs'}
+
 Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
 
 call plug#end()
 
 syntax enable
 filetype plugin indent on
-"set background=dark
+" set background=dark
 colo lucius
 
-set lazyredraw
+set nolazyredraw
 " set ttyfast
 set number
 set scrolloff=7
@@ -99,11 +106,6 @@ endif
 if has("gui_running")
   set guicursor+=a:blinkon0
   set guifont=Source_Code_Pro:h11
-  " set guifont=Monaco:h11
-endif
-if has("nvim")
-  set guicursor+=a:blinkon0
-  set guifont=Source_Code_Pro:h11
 endif
 set noshowmode
 set ruler
@@ -146,17 +148,9 @@ noremap <silent> <leader>w :w<CR>
 noremap <silent> <leader>q :q<CR>
 noremap <silent> <leader><S-q> :qa<CR>
 
-tnoremap <C-w> <C-\><C-n><C-w>
-" noremap <leader>a <C-w>
-
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
-" tnoremap <C-j> <C-w>j
-" tnoremap <C-k> <C-w>k
-" tnoremap <C-h> <C-w>h
-" tnoremap <C-l> <C-w>l
+if has("nvim")
+  tnoremap <C-w> <C-\><C-n><C-w>
+endif
 
 noremap x "_x
 
