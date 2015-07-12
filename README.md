@@ -40,7 +40,7 @@ vim
 ```
 This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin, which requires an extra command to build (see their README for more info):
 ```sh
-cd ~/.vim/bundle/YouCompleteMe
+cd ~/.vim/plugged/YouCompleteMe
 ./install.sh # optional flags: --clang-completer --omnisharp-completer
 ```
 The editorconfig extension also depends on the external `editorconfig` being available.  You can install it with:
