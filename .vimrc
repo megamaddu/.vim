@@ -1,7 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 Plug 'jonathanfilip/vim-lucius'
+Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rking/ag.vim'
@@ -13,6 +15,11 @@ Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
+Plug 'sirver/ultisnips'
+Plug 'Shougo/vimproc.vim'
+
+Plug 'pbrisbin/vim-syntax-shakespeare'
 
 Plug 'vim-scripts/paredit.vim', {'for': 'clojure'}
 Plug 'guns/vim-clojure-static', {'for': 'clojure'}
@@ -24,7 +31,13 @@ Plug 'kchmck/vim-coffee-script', {'for': 'coffeescript'}
 Plug 'othree/html5.vim', {'for': 'html'}
 
 Plug 'raichoo/haskell-vim', {'for': 'haskell'}
+" Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
+" Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
+" Plug 'kana/vim-textobj-indent', {'for': 'haskell'}
+
 Plug 'raichoo/purescript-vim', {'for': 'purescript'}
+
+Plug 'lambdatoast/elm.vim', {'for': 'elm'}
 
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
@@ -52,11 +65,11 @@ call plug#end()
 
 syntax enable
 filetype plugin indent on
-" set background=dark
+set background=dark
 colo lucius
 
 set nolazyredraw
-" set ttyfast
+" set timeoutlen=50
 set number
 set scrolloff=7
 set shortmess=flmnrxIstToO
@@ -150,6 +163,10 @@ noremap <silent> <leader><S-q> :qa<CR>
 
 if has("nvim")
   tnoremap <C-w> <C-\><C-n><C-w>
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 noremap x "_x
@@ -248,23 +265,9 @@ map <leader>e :Eval<enter>
 let g:localvimrc_whitelist = "/Users/trotter"
 
 
-" LimeLight:
-let g:limelight_conceal_ctermfg = 240
-let g:limelight_default_coefficient = 0.6
-
-
-" Goyo:
-let g:goyo_width = 90
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-let g:goyo_linenr = 0
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
-nnoremap <F3> :Goyo<CR>
-vnoremap <F3> :<C-U>Goyo<CR>
-inoremap <F3> <C-O>:Goyo<CR>
-cnoremap <F3> <C-C>:Goyo<CR>
-"autocmd BufNewFile,BufRead * :Goyo
+" Neco-ghc:
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:necoghc_enable_detailed_browse = 1
 
 
 " Paredit:
