@@ -1,8 +1,8 @@
 .vim
 ====
 
-I use [Neovim](http://neovim.io).  Most of this config was in place before I switched, so it will probably work fine in any modern vim (7.4), but I don't actively test it in classic vim.
-Give Neovim a try if you aren't using it!  It's an awesome project.
+I use [Neovim](http://neovim.io).  Most of this config was in place before I switched, so it will probably work fine in any modern vim (7.4), but I don't actively test it.  I don't want to exclude it yet though, so let me know if something's broken.
+Give Neovim a try if you haven't (or another try if you have in the past)!  It's an awesome project.
 
 
 Goodies
