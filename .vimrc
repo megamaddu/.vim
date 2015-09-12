@@ -2,7 +2,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'jonathanfilip/vim-lucius'
+" Plug 'jonathanfilip/vim-lucius'
+Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/YouCompleteMe'
@@ -15,9 +16,11 @@ Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'godlygeek/tabular'
 Plug 'sirver/ultisnips'
 Plug 'Shougo/vimproc.vim'
+Plug 'majutsushi/tagbar'
 
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
@@ -33,6 +36,7 @@ Plug 'othree/html5.vim', {'for': 'html'}
 Plug 'raichoo/haskell-vim', {'for': 'haskell'}
 " Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 " Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
+Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
 " Plug 'kana/vim-textobj-indent', {'for': 'haskell'}
 
 Plug 'raichoo/purescript-vim', {'for': 'purescript'}
@@ -50,8 +54,9 @@ Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'tpope/vim-haml', {'for': 'haml'}
 
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-" Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'mxw/vim-jsx', {'for': 'javascript'}
+Plug 'facebook/vim-flow', {'for': 'javascript'}
 
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'mtscout6/vim-cjsx', {'for': 'coffee'}
@@ -66,8 +71,9 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 set background=dark
-colo lucius
+colo solarized
 
+set omnifunc=syntaxcomplete#Complete
 set nolazyredraw
 " set timeoutlen=50
 set number
@@ -161,6 +167,9 @@ noremap <silent> <leader>w :w<CR>
 noremap <silent> <leader>q :q<CR>
 noremap <silent> <leader><S-q> :qa<CR>
 
+noremap <silent> <leader><tab> :NERDTree<CR>
+noremap <silent> <leader>p :set invpaste paste?<CR>
+
 if has("nvim")
   tnoremap <C-w> <C-\><C-n><C-w>
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -193,8 +202,6 @@ endif
 
 noremap <leader>sp :split<CR>
 noremap <leader>vs :vsplit<CR>
-
-set pastetoggle=<F2>
 
 
 " Airline:
@@ -258,7 +265,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "%1"}
 
 
 " Fireplace:
-map <leader>e :Eval<enter>
+map <leader>e :Eval<cr>
 
 
 " Dbext:
@@ -278,3 +285,32 @@ let g:paredit_smartjump = 1
 
 " EditorConfig:
 let g:EditorConfig_core_mode = 'external_command'
+
+
+" Flow:
+let g:flow#autoclose = 1
+map <leader>fc :FlowMake<cr>
+map <leader>ft :FlowToggle<cr>
+map <leader>fv :FlowType<cr>
+map <leader>fa :FlowFindRefs<cr>
+
+
+" Haskell:
+" autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+" let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+
+" " Reload
+" map <silent> tu :call GHC_BrowseAll()<CR>
+" " Type Lookup
+" map <silent> tw :call GHC_ShowType(1)<CR>
+
+
+" Tagbar:
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+autocmd BufEnter *.hs set formatprg=pointfree
