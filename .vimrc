@@ -6,7 +6,7 @@ Plug 'tpope/vim-surround'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': 'sh install.py'}
 Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -22,6 +22,9 @@ Plug 'sirver/ultisnips'
 Plug 'Shougo/vimproc.vim'
 Plug 'majutsushi/tagbar'
 
+Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
+Plug 'Shougo/deoplete.nvim'
+
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 Plug 'vim-scripts/paredit.vim', {'for': 'clojure'}
@@ -29,14 +32,16 @@ Plug 'guns/vim-clojure-static', {'for': 'clojure'}
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-salve', {'for': 'clojure'}
 
+Plug 'wlangstroth/vim-racket', {'for': 'racket'}
+
 Plug 'kchmck/vim-coffee-script', {'for': 'coffeescript'}
 
 Plug 'othree/html5.vim', {'for': 'html'}
 
 Plug 'raichoo/haskell-vim', {'for': 'haskell'}
-" Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
-" Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
-Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
+Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
+Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
+" Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
 " Plug 'kana/vim-textobj-indent', {'for': 'haskell'}
 
 Plug 'raichoo/purescript-vim', {'for': 'purescript'}
@@ -126,6 +131,7 @@ if has("gui_running")
   set guicursor+=a:blinkon0
   set guifont=Source_Code_Pro:h11
 endif
+set clipboard=unnamed
 set noshowmode
 set ruler
 set laststatus=2
@@ -210,7 +216,7 @@ let g:airline_right_sep=''
 
 
 " CtrlP:
-set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,bower_components,dist,target,out
+set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,jspm_packages,bower_components,dist,target,out,output
 
 let g:ctrlp_map = '<leader><Space>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -227,9 +233,8 @@ noremap <silent> <leader>fr :CtrlPMRU<CR>
 noremap <silent> <leader>ft :CtrlPBufTag<CR>
 
 
-" Tern:
-"noremap <silent> <leader>td :TernDef<CR>
-"noremap <silent> <leader>tp :TernDefPreview<CR>
+" Deoplete:
+let g:deoplete#enable_at_startup = 1
 
 
 " Jsx:
@@ -295,22 +300,29 @@ map <leader>fv :FlowType<cr>
 map <leader>fa :FlowFindRefs<cr>
 
 
+" Standardjs:
+" let g:syntastic_javascript_checkers = ['standard']
+" autocmd bufwritepost *.js silent !standard % --format
+" autocmd bufwritepost *.jsx silent !standard % --format
+" set autoread
+
+
 " Haskell:
-" autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-" let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+au FileType haskell nnoremap <buffer> <F1> :GhcModType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :GhcModTypeClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :GhcModInfo<CR>
+" au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+" au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+" au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
-" " Reload
-" map <silent> tu :call GHC_BrowseAll()<CR>
-" " Type Lookup
-" map <silent> tw :call GHC_ShowType(1)<CR>
+autocmd BufEnter *.hs set formatprg=pointfree
+
+let g:ghcmod_hlint_options = ['--ignore=Redundant do']
 
 
 " Tagbar:
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
-
-autocmd BufEnter *.hs set formatprg=pointfree

@@ -31,6 +31,13 @@ Clone the repo and symlink `.vimrc` (back up your existing first profile if you 
 git clone --recursive git://github.com/spicydonuts/.vim.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
 ```
+
+If you're using neovim, you'll need the python plugins for python-based plugins to work:
+```sh
+pip2 install neovim
+pip3 install neovim
+```
+
 Open vim and install plugins (ignore the warning about not finding lucius colors)
 ```
 vim
@@ -38,11 +45,10 @@ vim
 :PlugInstall
 (close vim when it's done)
 ```
+
 This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin, which requires an extra command to build (see their README for more info):
-```sh
-cd ~/.vim/plugged/YouCompleteMe
-./install.sh # optional flags: --clang-completer --omnisharp-completer
-```
+Plug will compile it automatically, so the first install may take a while.
+
 The editorconfig extension also depends on the external `editorconfig` being available.  You can install it with:
 ```sh
 brew install editorconfig
@@ -56,7 +62,8 @@ This `.vimrc` uses the excellent [Source Code Pro](http://adobe-fonts.github.io/
 
 Colors
 ----
-Includes [Lucius](https://github.com/spicydonuts/lucius), if you'd like to use it for your terminal as well.  My fork just adds OS X Terminal profiles (iTerm2 is very laggy in my experience).
+Old version: Includes [Lucius](https://github.com/spicydonuts/lucius), if you'd like to use it for your terminal as well.  My fork just adds OS X Terminal profiles (iTerm2 is very laggy in my experience).
+I now use Solarized Dark by default, though both colorschemes are good.
 
 
 Thanks
