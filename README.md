@@ -66,13 +66,17 @@ brew install editorconfig
 
 Fonts
 ----
-This `.vimrc` uses the excellent [Source Code Pro](http://adobe-fonts.github.io/source-code-pro/) (when in a gui like `macvim` or `gvim`).
+This `.vimrc` uses the [Hasklig](https://github.com/i-tu/Hasklig/) font, which is based on the excellent [Source Code Pro](http://adobe-fonts.github.io/source-code-pro/).
+This only applies when in a GUI such as `macvim` or `gvim`.  Running vim in a terminal always uses the terminal's font.
 
 
 Colors
 ----
-Old version: Includes [Lucius](https://github.com/spicydonuts/lucius), if you'd like to use it for your terminal as well.  My fork just adds OS X Terminal profiles (iTerm2 is very laggy in my experience).
-I now use Solarized Dark by default, though both colorschemes are good.
+This `.vimrc` comes with [One Dark]() enabled by default, and a few others included which I've used in the past and also like.  Below are links to Terminal color profiles for those themes.  You should match your terminal colors to your vim theme for it to work correctly.  `macvim` is the best way to test a theme without terminal color settings interfering.
+
+* One Dark -- [Terminal.app](https://github.com/nathanbuchar/atom-one-dark-terminal) & [iTerm](https://github.com/joshdick/onedark.vim)
+* [Lucius](https://github.com/jonathanfilip/lucius)
+* [Solarized Dark](https://github.com/altercation/solarized)
 
 
 Thanks
