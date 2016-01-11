@@ -47,16 +47,13 @@ pip2 install neovim
 pip3 install neovim
 ```
 
-Open vim and install plugins (ignore the warning about not finding lucius colors)
+Open vim and install plugins (ignore the warning about not finding `onedark` colors the first time you open vim).
+
 ```shell
-vim
 (in vim)
 :PlugInstall
-(close vim when it's done)
+(once it's done, close and reopen vim)
 ```
-
-This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin, which requires an extra command to build (see their README for more info):
-Plug will compile it automatically, so the first install may take a while.
 
 The editorconfig extension also depends on the external `editorconfig` being available.  You can install it with:
 ```shell
