@@ -4,28 +4,27 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 " Plug 'jonathanfilip/vim-lucius'
 Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'joshdick/onedark.vim'
+Plug 'joshdick/airline-onedark.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'Valloric/YouCompleteMe', {'do': 'sh install.py'}
 Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/emmet-vim'
 Plug 'scrooloose/syntastic'
-Plug 'tomtom/tcomment_vim'
+" Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'godlygeek/tabular'
-Plug 'sirver/ultisnips'
-Plug 'Shougo/vimproc.vim'
-Plug 'majutsushi/tagbar'
+" Plug 'godlygeek/tabular'
+" Plug 'sirver/ultisnips'
+" Plug 'majutsushi/tagbar'
 
-Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
-Plug 'Shougo/deoplete.nvim'
-
-Plug 'pbrisbin/vim-syntax-shakespeare'
+" Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+" Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
+" Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neocomplete.vim'
 
 Plug 'vim-scripts/paredit.vim', {'for': 'clojure'}
 Plug 'guns/vim-clojure-static', {'for': 'clojure'}
@@ -34,19 +33,19 @@ Plug 'tpope/vim-salve', {'for': 'clojure'}
 
 Plug 'wlangstroth/vim-racket', {'for': 'racket'}
 
-Plug 'kchmck/vim-coffee-script', {'for': 'coffeescript'}
-
-Plug 'othree/html5.vim', {'for': 'html'}
-
 Plug 'raichoo/haskell-vim', {'for': 'haskell'}
 Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
 " Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
 " Plug 'kana/vim-textobj-indent', {'for': 'haskell'}
+" Plug 'pbrisbin/vim-syntax-shakespeare'
+
+Plug 'idris-hackers/idris-vim', {'for': 'idris'}
 
 Plug 'raichoo/purescript-vim', {'for': 'purescript'}
+Plug 'frigoeu/psc-ide-vim', {'for': 'purescript'}
 
-Plug 'lambdatoast/elm.vim', {'for': 'elm'}
+Plug 'ElmCast/elm-vim', {'for': 'elm'}
 
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
@@ -56,18 +55,19 @@ Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 
 Plug 'fatih/vim-go', {'for': 'go'}
 
+Plug 'othree/html5.vim', {'for': 'html'}
+Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'tpope/vim-haml', {'for': 'haml'}
+Plug 'digitaltoad/vim-jade', {'for': 'jade'}
 
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
-Plug 'mxw/vim-jsx', {'for': 'javascript'}
+Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
 Plug 'facebook/vim-flow', {'for': 'javascript'}
 
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'mtscout6/vim-cjsx', {'for': 'coffee'}
 
 Plug 'OmniSharp/omnisharp-vim', {'for': 'cs'}
-"Plug 'OrangeT/vim-csharp', {'for': 'cs'}
 
 Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
 
@@ -76,10 +76,17 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 set background=dark
-colo solarized
+colo onedark
+let g:airline_theme='onedark'
 
-set omnifunc=syntaxcomplete#Complete
-set nolazyredraw
+" if has("autocmd") && exists("+omnifunc")
+"   autocmd Filetype *
+"     \	if &omnifunc == "" |
+"     \		setlocal omnifunc=syntaxcomplete#Complete |
+"     \	endif
+" endif
+
+set lazyredraw
 " set timeoutlen=50
 set number
 set scrolloff=7
@@ -127,11 +134,17 @@ set whichwrap+=<,>,h,l
 if version >= 703 && !has("nvim")
   set cryptmethod=blowfish
 endif
-if has("gui_running")
+if has("gui_running") || has("nvim")
+  set macligatures
   set guicursor+=a:blinkon0
-  set guifont=Source_Code_Pro:h11
+  set guifont=Hasklig:h14
+  let g:onedark_termcolors=256
+  let g:onedark_terminal_italics=1
+else
+  let g:onedark_termcolors=256
+  let g:onedark_terminal_italics=0
 endif
-set clipboard=unnamed
+" set clipboard=unnamed
 set noshowmode
 set ruler
 set laststatus=2
@@ -233,8 +246,19 @@ noremap <silent> <leader>fr :CtrlPMRU<CR>
 noremap <silent> <leader>ft :CtrlPBufTag<CR>
 
 
-" Deoplete:
-let g:deoplete#enable_at_startup = 1
+" Neocomplete:
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript.jsx setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 " Jsx:
@@ -248,18 +272,20 @@ let NERDRemoveExtraSpaces=0
 
 
 " Syntastic:
-let g:syntastic_check_on_open = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_echo_current_error = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_enable_balloons = 1
-let g:syntastic_always_populate_loc_list=1
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_mode_map = {
-      \ "mode": "passive",
-      \ "active_filetypes": [],
-      \ "passive_filetypes": [] }
 let g:syntastic_python_checkers = ["pyflakes"]
+let g:syntastic_javascript_checkers = ['eslint']
 map <Leader>syc :SyntasticCheck<CR>
 map <Leader>syr :SyntasticReset<CR>
 
@@ -300,13 +326,6 @@ map <leader>fv :FlowType<cr>
 map <leader>fa :FlowFindRefs<cr>
 
 
-" Standardjs:
-" let g:syntastic_javascript_checkers = ['standard']
-" autocmd bufwritepost *.js silent !standard % --format
-" autocmd bufwritepost *.jsx silent !standard % --format
-" set autoread
-
-
 " Haskell:
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
@@ -326,3 +345,10 @@ let g:ghcmod_hlint_options = ['--ignore=Redundant do']
 " Tagbar:
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
+
+
+" Haskell:
+map <leader>pt :PSCIDEtype<cr>
+map <leader>pl :PSCIDElist<cr>
+map <leader>pp :PSCIDEpursuit<cr>
+map <leader>pa :PSCIDEapplySuggestion<cr>

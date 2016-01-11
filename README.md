@@ -27,19 +27,28 @@ And go bind your `CapsLock` key to `Esc` for goodness' sake! ([Karabiner](https:
 To use this configuration
 ----
 Clone the repo and symlink `.vimrc` (back up your existing first profile if you have one!):
-```sh
+
+```shell
 git clone --recursive git://github.com/spicydonuts/.vim.git ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
 ```
 
-If you're using neovim, you'll need the python plugins for python-based plugins to work:
-```sh
+If you're using neovim, you'll need to symlink your vim config so neovim can see it:
+
+```shell
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+```
+
+Neovim also requires some python plugins:
+
+```shell
 pip2 install neovim
 pip3 install neovim
 ```
 
 Open vim and install plugins (ignore the warning about not finding lucius colors)
-```
+```shell
 vim
 (in vim)
 :PlugInstall
@@ -50,7 +59,7 @@ This includes the [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plu
 Plug will compile it automatically, so the first install may take a while.
 
 The editorconfig extension also depends on the external `editorconfig` being available.  You can install it with:
-```sh
+```shell
 brew install editorconfig
 ```
 
