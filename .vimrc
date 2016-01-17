@@ -12,7 +12,7 @@ Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/syntastic'
-" Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -303,7 +303,7 @@ map <leader>e :Eval<cr>
 let g:localvimrc_whitelist = "/Users/trotter"
 
 
-" Neco-ghc:
+" Necoghc:
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
 
