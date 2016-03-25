@@ -22,7 +22,7 @@ Plug 'tpope/vim-rhubarb'
 " Plug 'majutsushi/tagbar'
 
 " Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-" Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
+Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
 " Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neocomplete.vim'
 
@@ -59,6 +59,7 @@ Plug 'othree/html5.vim', {'for': 'html'}
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'tpope/vim-haml', {'for': 'haml'}
 Plug 'digitaltoad/vim-jade', {'for': 'jade'}
+Plug 'jimmyhchan/dustjs.vim', {'for': 'dust'}
 
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
@@ -75,7 +76,7 @@ call plug#end()
 
 syntax enable
 filetype plugin indent on
-set background=dark
+" set background=dark
 colo onedark
 let g:airline_theme='onedark'
 
@@ -86,8 +87,8 @@ let g:airline_theme='onedark'
 "     \	endif
 " endif
 
-set lazyredraw
-" set timeoutlen=50
+" set lazyredraw
+set timeoutlen=300
 set number
 set scrolloff=7
 set shortmess=flmnrxIstToO
@@ -134,10 +135,10 @@ set whichwrap+=<,>,h,l
 if version >= 703 && !has("nvim")
   set cryptmethod=blowfish
 endif
-if has("gui_running") || has("nvim")
+if has("gui_running")
   set macligatures
   set guicursor+=a:blinkon0
-  set guifont=Hasklig:h14
+  set guifont=Hasklig:h13
   let g:onedark_termcolors=256
   let g:onedark_terminal_italics=1
 else
@@ -171,6 +172,8 @@ nnoremap <S-h> :call ToggleHiddenAll()<CR>
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 
 au BufNewFile,BufRead *.cshtml set filetype=html
+au BufNewFile,BufRead *.dust set filetype=html
+au BufNewFile,BufRead *.dust set filetype=dustjs
 au BufNewFile,BufRead *.src set filetype=erlang
 au BufNewFile,BufRead rebar.config set filetype=erlang
 au BufNewFile,BufRead *.cljx set filetype=clojure
@@ -184,7 +187,7 @@ noremap <silent> <leader>x :bp\|bd #<CR>
 
 noremap <silent> <leader>w :w<CR>
 noremap <silent> <leader>q :q<CR>
-noremap <silent> <leader><S-q> :qa<CR>
+noremap <silent> <leader>qq :qa<CR>
 
 noremap <silent> <leader><tab> :NERDTree<CR>
 noremap <silent> <leader>p :set invpaste paste?<CR>
@@ -229,7 +232,7 @@ let g:airline_right_sep=''
 
 
 " CtrlP:
-set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,jspm_packages,bower_components,dist,target,out,output
+set wildignore+=tmp,*.so,*.swp,*.zip,.git,node_modules,jspm_packages,bower_components,dist,target,out,output,docs
 
 let g:ctrlp_map = '<leader><Space>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -246,7 +249,7 @@ noremap <silent> <leader>fr :CtrlPMRU<CR>
 noremap <silent> <leader>ft :CtrlPBufTag<CR>
 
 
-" Neocomplete:
+" " Neocomplete:
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -260,6 +263,26 @@ autocmd FileType javascript.jsx setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-y>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
 
 " Jsx:
 let g:jsx_ext_required = 0
@@ -272,6 +295,10 @@ let NERDRemoveExtraSpaces=0
 
 
 " Syntastic:
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['python', 'javascript'],
+                           \ 'passive_filetypes': [] }
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -279,13 +306,13 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_echo_current_error = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_python_checkers = ["pyflakes"]
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['npm -s run lint']
 map <Leader>syc :SyntasticCheck<CR>
 map <Leader>syr :SyntasticReset<CR>
 
@@ -347,8 +374,8 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 
-" Haskell:
-map <leader>pt :PSCIDEtype<cr>
-map <leader>pl :PSCIDElist<cr>
-map <leader>pp :PSCIDEpursuit<cr>
-map <leader>pa :PSCIDEapplySuggestion<cr>
+" PureScript:
+au FileType purescript nnoremap <silent> <leader>t :PSCIDEtype<CR>
+au FileType purescript nnoremap <silent> <leader>s :PSCIDEapplySuggestion<CR>
+au FileType purescript nnoremap <silent> <leader>p :PSCIDEpursuit<CR>
+au FileType purescript nnoremap <silent> <leader>c :PSCIDEcaseSplit<CR>
